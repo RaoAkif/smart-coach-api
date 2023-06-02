@@ -1,35 +1,12 @@
 {
-  "name": "smart-coach",
-  "version": "0.1.0",
-  "private": true,
+  "name": "smart-coach-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "@chakra-ui/react": "^2.6.1",
-    "@emotion/react": "^11.11.0",
-    "@emotion/styled": "^11.11.0",
-    "@prisma/client": "^4.14.1",
-    "@types/node": "20.1.5",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
-    "autoprefixer": "10.4.14",
-    "eslint": "8.40.0",
-    "eslint-config-next": "13.4.2",
-    "framer-motion": "^4.1.17",
-    "next": "13.4.2",
-    "postcss": "8.4.23",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-hook-form": "^7.43.9",
-    "tailwindcss": "3.3.2",
-    "typescript": "5.0.4"
-  },
-  "devDependencies": {
-    "@hookform/devtools": "^4.3.1",
-    "prisma": "^4.14.1"
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
