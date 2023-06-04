@@ -1,11 +1,12 @@
-const bcrypt = require("bcrypt");
-const { PrismaClient } = require('@prisma/client');
+import { Request, Response, NextFunction } from 'express';
+import { PrismaClient } from '@prisma/client';
+
 const prisma = new PrismaClient();
 
 // @desc Create a new user
 // @route POST /users
 // @access Private
-const getAllUsers = async (req, res, next) => {
+const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const users = await prisma.user.findMany();
     res.json(users);
@@ -17,7 +18,7 @@ const getAllUsers = async (req, res, next) => {
 // @desc Create a new user
 // @route POST /users
 // @access Private
-const getUserById = async (req, res, next) => {
+const getUserById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params
     const user = await prisma.user.findUnique({
@@ -34,7 +35,7 @@ const getUserById = async (req, res, next) => {
 // @desc Update a user
 // @route POST /users/1
 // @access Private
-const updateUser = async (req, res, next) => {
+const updateUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const salt = await bcrypt.genSalt(10);
     req.body.password = await bcrypt.hash(req.body.password, salt);
@@ -60,7 +61,7 @@ const updateUser = async (req, res, next) => {
 // @desc Delete a user
 // @route POST /users/1
 // @access Private
-const deleteUser = async (req, res, next) => {
+const deleteUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const deleteUser = await prisma.user.delete({
       where: {
@@ -73,7 +74,7 @@ const deleteUser = async (req, res, next) => {
   }
 }
 
-module.exports = {
+export {
   getAllUsers,
   getUserById,
   updateUser,
