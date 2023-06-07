@@ -28,3 +28,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(colors.green.bold.underline(`[Server]: Server running at PORT ${PORT} | http://localhost:${PORT}/`))
 })
+
+module.exports = app
