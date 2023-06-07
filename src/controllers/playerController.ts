@@ -9,10 +9,17 @@ export const addPlayer = async (req: Request, res: Response, next: NextFunction)
   try {
     const newUser = await prisma.player.create({
       data: {
-        name: req.body.name
-      } as Player, // Explicitly cast data object to User
-    })
-    res.json(newUser);
+        name,
+        number,
+        roster: {
+          connect: {
+            id: rosterId,
+          },
+        },
+      },
+    });
+
+    res.json(newPlayer);
   } catch (error) {
     next(error);
   }
@@ -59,7 +66,13 @@ export const updatePlayer = async (req: Request, res: Response, next: NextFuncti
         id: Number(req.params.id),
       },
       data: {
-        name: name,
+        name,
+        number,
+        roster: {
+          connect: {
+            id: rosterId,
+          },
+        },
       },
     })
     res.json(updatePlayer)

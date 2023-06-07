@@ -21,7 +21,8 @@ model User {
 model Player {
   id       Int     @id @default(autoincrement())
   name     String
-  Roster   Roster? @relation(fields: [rosterId], references: [id])
+  number   String
+  roster   Roster? @relation(fields: [rosterId], references: [id])
   rosterId Int?
 
   @@index([rosterId])
