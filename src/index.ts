@@ -7,7 +7,7 @@ import corsOptions from './config/corsOptions';
 
 import authRoute from "./routes/auth";
 import userRoute from "./routes/users";
-// import playerRoute from "./routes/players";
+import playerRoute from "./routes/players";
 import rosterRoute from "./routes/rosters";
 
 const app: Express = express();
@@ -23,7 +23,7 @@ dotenv.config();
 // ROUTES PRISMA
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
-// app.use("/api/posts", postsRoute);
+app.use("/api/players", playerRoute);
 app.use("/api/rosters", rosterRoute);
 
 const PORT = process.env.PORT || 5000;
