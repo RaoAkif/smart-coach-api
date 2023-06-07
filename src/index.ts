@@ -24,7 +24,7 @@ dotenv.config();
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 // app.use("/api/posts", postsRoute);
-app.use("/api/roster", rosterRoute);
+app.use("/api/rosters", rosterRoute);
 
 const PORT = process.env.PORT || 5000;
 

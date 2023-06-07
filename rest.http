@@ -52,5 +52,42 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc
 
 # ---------------------------------------------------------
 
-// -------- START PROMPT-CATEGORY REQUESTS -------- //
-### ADD A PROMT-CATEGORY
+// -------- START ROSTER REQUESTS -------- //
+
+###
+POST https://smart-coach-api.vercel.app/api/rosters
+Content-Type: application/json
+
+{
+  "playerIds": [1, 2, 3]
+}
+
+
+###
+GET https://smart-coach-api.vercel.app/api/rosters
+
+
+
+###
+GET https://smart-coach-api.vercel.app/api/rosters/:id
+
+
+
+###
+PUT https://smart-coach-api.vercel.app/api/rosters/:id
+Content-Type: application/json
+
+{
+  "playerIds": [4, 5, 6]
+}
+
+
+###
+DELETE https://smart-coach-api.vercel.app/api/rosters/:id
+
+
+###
+GET https://smart-coach-api.vercel.app/api/rosters/:id/players
+
+
+// -------- END ROSTER REQUESTS -------- //
