@@ -92,3 +92,37 @@ GET https://smart-coach-api.vercel.app/api/rosters/1/players
 
 
 // -------- END ROSTER REQUESTS -------- //
+
+
+// -------- START PLAYER REQUESTS -------- //
+
+### Create a new Player
+POST https://smart-coach-api.vercel.app/api/players
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "number": "+923330508717"
+}
+
+### Get all players
+GET https://smart-coach-api.vercel.app/api/players
+
+### Get a player by ID
+GET https://smart-coach-api.vercel.app/api/players/:id
+
+### Update a player
+PUT https://smart-coach-api.vercel.app/api/players/:id
+Content-Type: application/json
+
+{
+  {
+  "name": "Jenny Doe",
+  "number": "+923216363147"
+}
+}
+
+### Delete a player
+DELETE https://smart-coach-api.vercel.app/api/players/:id
+
+// -------- END PLAYER REQUESTS -------- //
