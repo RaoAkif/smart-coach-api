@@ -5,7 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import authRoute from "./routes/auth";
 import userRoute from "./routes/users";
-import postsRoute from "./routes/posts";
+// import postsRoute from "./routes/posts";
 import corsOptions from './config/corsOptions';
 
 const app: Express = express();
@@ -21,8 +21,7 @@ dotenv.config();
 // ROUTES PRISMA
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
-app.use("/api/posts", postsRoute);
-
+// app.use("/api/posts", postsRoute);
 
 const PORT = process.env.PORT || 5000;
 

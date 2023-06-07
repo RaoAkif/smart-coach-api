@@ -37,9 +37,6 @@ const getUserById = async (req: Request, res: Response, next: NextFunction): Pro
 // @access Private
 const updateUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const salt = await bcrypt.genSalt(10);
-    req.body.password = await bcrypt.hash(req.body.password, salt);
-
     const { username, email, password } = req.body
 
     const updateUser = await prisma.user.update({

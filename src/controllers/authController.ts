@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import bcrypt from 'bcrypt';
 import { PrismaClient, User } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -9,13 +8,11 @@ const prisma = new PrismaClient();
 // @access Private
 const registerUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const newUser = await prisma.user.create({
       data: {
         username: req.body.username,
         email: req.body.email,
-        password: hashedPassword,
+        password: req.body.password,
       } as User, // Explicitly cast data object to User
       select: {
         username: true,
@@ -39,7 +36,7 @@ const loginUser = async (req: Request, res: Response, next: NextFunction): Promi
       }
     })
     if (user) {
-      const validPassword = await bcrypt.compare(req.body.password, user.password);
+      const validPassword = await (req.body.password, user.password);
 
       if (validPassword) {
         res.json(user);
