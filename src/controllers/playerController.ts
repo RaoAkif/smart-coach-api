@@ -7,16 +7,25 @@ const prisma = new PrismaClient();
 // @access Private
 export const addPlayer = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const newUser = await prisma.player.create({
+    const { name, number, rosterId } = req.body;
+
+    const newPlayer = await prisma.player.create({
       data: {
-        name: req.body.name
-      } as Player, // Explicitly cast data object to User
-    })
-    res.json(newUser);
+        name,
+        number,
+        Roster: {
+          connect: {
+            id: rosterId,
+          },
+        },
+      },
+    });
+
+    res.json(newPlayer);
   } catch (error) {
     next(error);
   }
-}
+};
 
 // @desc Get all players
 // @route GET /players
@@ -26,60 +35,71 @@ export const getAllPlayers = async (req: Request, res: Response, next: NextFunct
     const players = await prisma.player.findMany();
     res.json(players);
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
 
-// @desc Create a new player
-// @route POST /players
+// @desc Get a player by ID
+// @route GET /players/:id
 // @access Private
 export const getPlayerById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { id } = req.params
+    const { id } = req.params;
     const player = await prisma.player.findUnique({
       where: {
         id: Number(id),
       },
-    })
-    res.json(player)
+    });
+    res.json(player);
   } catch (error) {
-    next(error)
+    next(error);
   }
-}
+};
 
 // @desc Update a player
-// @route POST /players/1
+// @route PUT /players/:id
 // @access Private
 export const updatePlayer = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { name } = req.body
+    const { id } = req.params;
+    const { name, number, rosterId } = req.body;
 
-    const updatePlayer = await prisma.player.update({
+    const updatedPlayer = await prisma.player.update({
       where: {
-        id: Number(req.params.id),
+        id: Number(id),
       },
       data: {
-        name: name,
+        name,
+        number,
+        Roster: {
+          connect: {
+            id: rosterId,
+          },
+        },
       },
-    })
-    res.json(updatePlayer)
+    });
+
+    res.json(updatedPlayer);
   } catch (error) {
     next(error);
   }
-}
+};
 
 // @desc Delete a player
-// @route POST /players/1
+// @route DELETE /players/:id
 // @access Private
 export const deletePlayer = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const deletePlayer = await prisma.player.delete({
+    const { id } = req.params;
+
+    const deletedPlayer = await prisma.player.delete({
       where: {
-        id: Number(req.params.id),
+        id: Number(id),
       },
-    })
-    res.json(deletePlayer)
+    });
+
+    res.json(deletedPlayer);
   } catch (error) {
     next(error);
   }
-}
+};
