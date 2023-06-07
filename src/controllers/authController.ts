@@ -6,11 +6,12 @@ const prisma = new PrismaClient();
 // @desc Register a new user
 // @route POST /users
 // @access Private
-const registerUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const registerUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const newUser = await prisma.user.create({
       data: {
-        username: req.body.username,
+        name: req.body.name,    
+        username: req.body.username,    
         email: req.body.email,
         password: req.body.password,
       } as User, // Explicitly cast data object to User
@@ -28,7 +29,7 @@ const registerUser = async (req: Request, res: Response, next: NextFunction): Pr
 // @desc Login a new user
 // @route POST /users
 // @access Private
-const loginUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const loginUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const user = await prisma.user.findUnique({
       where: {
@@ -49,9 +50,4 @@ const loginUser = async (req: Request, res: Response, next: NextFunction): Promi
   } catch (error) {
     next(error);
   }
-};
-
-export {
-  registerUser,
-  loginUser
 };

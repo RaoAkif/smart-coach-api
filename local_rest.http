@@ -1,21 +1,21 @@
 // -------- START USERS REQUESTS -------- //
 ### GET ALL USERS
-GET https://smart-coach-api.vercel.app/api/users
+GET http://localhost:8000/api/users
 Content-Type: application/json
 
 ### REGISTER A USER
-POST https://smart-coach-api.vercel.app/api/auth/register
+POST http://localhost:8000/api/auth/register
 Content-Type: application/json
 
 {
-  "name": "Rao Akif 03",
-  "pseudonym": "raoakif03",
-  "email": "akifrao03@gmail.com",
+  "name": "Rao Akif 02",
+  "username": "raoakif02",
+  "email": "akifrao02@gmail.com",
   "password": "123456"
 }
 
 ### LOGIN USER
-POST https://smart-coach-api.vercel.app/api/auth/
+POST http://localhost:8000/api/auth/
 Content-Type: application/json
 
 {
@@ -24,16 +24,16 @@ Content-Type: application/json
 }
 
 ### GET ALL USERS
-GET https://smart-coach-api.vercel.app/api/users
+GET http://localhost:8000/api/users
 Content-Type: application/json
 
 ### GET USER BY ID
-GET https://smart-coach-api.vercel.app/api/users/3
+GET http://localhost:8000/api/users/3
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
 
 ### EDIT USER
-PUT https://smart-coach-api.vercel.app/api/users/1
+PUT http://localhost:8000/api/users/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
 
@@ -45,7 +45,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc
 }
 
 ### DELETE A USER
-DELETE https://smart-coach-api.vercel.app/api/users/3
+DELETE http://localhost:8000/api/users/3
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
 // -------- END USERS REQUESTS -------- //
@@ -54,3 +54,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc
 
 // -------- START PROMPT-CATEGORY REQUESTS -------- //
 ### ADD A PROMT-CATEGORY
+
+
+
+### REGISTER A USER
+POST http://localhost:8000/api/users
+Content-Type: application/json
+
+{
+  "name": "Rao Akif 01",
+  "pseudonym": "raoakif01",
+  "email": "akifrao01@gmail.com",
+  "password": "123456"
+}
