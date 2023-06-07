@@ -3,10 +3,12 @@ import dotenv from 'dotenv';
 import colors from 'colors';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import corsOptions from './config/corsOptions';
+
 import authRoute from "./routes/auth";
 import userRoute from "./routes/users";
-// import postsRoute from "./routes/posts";
-import corsOptions from './config/corsOptions';
+// import playerRoute from "./routes/players";
+import rosterRoute from "./routes/rosters";
 
 const app: Express = express();
 
@@ -22,6 +24,7 @@ dotenv.config();
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 // app.use("/api/posts", postsRoute);
+app.use("/api/roster", rosterRoute);
 
 const PORT = process.env.PORT || 5000;
 
