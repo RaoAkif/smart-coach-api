@@ -1,12 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 import { PrismaClient } from '@prisma/client';
-
 const prisma = new PrismaClient();
 
 // @desc Create a new user
 // @route POST /users
 // @access Private
-const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const users = await prisma.user.findMany();
     res.json(users);
@@ -18,7 +17,7 @@ const getAllUsers = async (req: Request, res: Response, next: NextFunction): Pro
 // @desc Create a new user
 // @route POST /users
 // @access Private
-const getUserById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getUserById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params
     const user = await prisma.user.findUnique({
@@ -35,7 +34,7 @@ const getUserById = async (req: Request, res: Response, next: NextFunction): Pro
 // @desc Update a user
 // @route POST /users/1
 // @access Private
-const updateUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const updateUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { username, email, password } = req.body
 
@@ -58,7 +57,7 @@ const updateUser = async (req: Request, res: Response, next: NextFunction): Prom
 // @desc Delete a user
 // @route POST /users/1
 // @access Private
-const deleteUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const deleteUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const deleteUser = await prisma.user.delete({
       where: {
@@ -69,11 +68,4 @@ const deleteUser = async (req: Request, res: Response, next: NextFunction): Prom
   } catch (error) {
     next(error);
   }
-}
-
-export {
-  getAllUsers,
-  getUserById,
-  updateUser,
-  deleteUser
 }
