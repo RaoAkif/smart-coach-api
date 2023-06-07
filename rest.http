@@ -54,40 +54,41 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc
 
 // -------- START ROSTER REQUESTS -------- //
 
-###
+### Create a new Roster
 POST https://smart-coach-api.vercel.app/api/rosters
 Content-Type: application/json
 
 {
-  "playerIds": [1, 2, 3]
+  "playerIds": [1, 2]
 }
 
 
-###
+### Get all rosters
 GET https://smart-coach-api.vercel.app/api/rosters
 
 
 
-###
+### Get a roster by ID
 GET https://smart-coach-api.vercel.app/api/rosters/:id
 
 
 
-###
+### Update a roster
 PUT https://smart-coach-api.vercel.app/api/rosters/:id
 Content-Type: application/json
 
 {
-  "playerIds": [4, 5, 6]
+  "playerIds": [3, 4]
 }
 
 
-###
+### Delete a roster
 DELETE https://smart-coach-api.vercel.app/api/rosters/:id
 
 
-###
-GET https://smart-coach-api.vercel.app/api/rosters/:id/players
+### Get all players in a roster
+# GET https://smart-coach-api.vercel.app/api/rosters/:id/players
+GET https://smart-coach-api.vercel.app/api/rosters/1/players
 
 
 // -------- END ROSTER REQUESTS -------- //
