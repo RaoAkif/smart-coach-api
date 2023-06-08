@@ -126,3 +126,47 @@ Content-Type: application/json
 DELETE https://smart-coach-api.vercel.app/api/players/:id
 
 // -------- END PLAYER REQUESTS -------- //
+
+
+// -------- START EVENT REQUESTS -------- //
+
+### Create a new Event
+POST https://smart-coach-api.vercel.app/api/events
+Content-Type: application/json
+
+{
+  "event_type": "MATCH",
+  "date": "2023-06-10",
+  "time": "15:00",
+  "location": "Stadium XYZ",
+  "details": "Important match against Team ABC",
+  "rosterId": 1
+}
+
+### Get all events
+GET https://smart-coach-api.vercel.app/api/events
+
+### Get an event by ID
+GET https://smart-coach-api.vercel.app/api/events/1
+
+### Update an event
+PUT https://smart-coach-api.vercel.app/api/events/:id
+Content-Type: application/json
+
+{
+  "event_type": "PRACTICE",
+  "date": "2023-06-12",
+  "time": "10:00",
+  "location": "Training Ground",
+  "details": "Practice session for upcoming match",
+  "rosterId": 1
+}
+
+### Delete an event
+DELETE https://smart-coach-api.vercel.app/api/events/:id
+
+### Get an event with all players
+GET https://smart-coach-api.vercel.app/api/events/1/players
+
+
+// -------- END EVENT REQUESTS -------- //
