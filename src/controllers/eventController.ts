@@ -191,7 +191,46 @@ export const updatePlayerAvailability = async (req: Request, res: Response, next
   }
 };
 
-export const generateInvitationToken = async (req: Request, res: Response, next: NextFunction ): Promise<void> => {
+// @desc Get an event by invitation token
+// @route GET /events/:invitationToken
+// @access Public
+export const getEventByInvitationToken = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const { invitationToken } = req.params;
+
+    const event = await prisma.event.findUnique({
+      where: {
+        invitationToken,
+      },
+      include: {
+        roster: {
+          include: {
+            players: true,
+          },
+        },
+      },
+    });
+
+    if (!event) {
+      res.status(404).json({ message: 'Event not found' });
+      return;
+    }
+
+    res.render('event', { event });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const generateInvitationToken = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
   try {
     const { eventId } = req.params;
 

@@ -4,6 +4,7 @@ import colors from 'colors';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import corsOptions from './config/corsOptions';
+import path from 'path';
 
 import authRoute from "./routes/auth";
 import userRoute from "./routes/users";
@@ -12,6 +13,9 @@ import rosterRoute from "./routes/rosters";
 import eventRoute from "./routes/events";
 
 const app: Express = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 app.use(cors(corsOptions))
 
