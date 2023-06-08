@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { PrismaClient } from '@prisma/client';
+import { v4 as uuidv4 } from 'uuid';
 
 const prisma = new PrismaClient();
 
@@ -185,6 +186,29 @@ export const updatePlayerAvailability = async (req: Request, res: Response, next
     });
 
     res.json(updatedPlayer);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const generateInvitationToken = async (req: Request, res: Response, next: NextFunction ): Promise<void> => {
+  try {
+    const { eventId } = req.params;
+
+    // Generate a random unique hash using UUID
+    const invitationToken: string = uuidv4();
+
+    // Store the invitation token with the event in the database
+    await prisma.event.update({
+      where: {
+        id: Number(eventId),
+      },
+      data: {
+        invitationToken,
+      },
+    });
+
+    res.json({ invitationToken });
   } catch (error) {
     next(error);
   }
