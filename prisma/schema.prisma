@@ -44,6 +44,7 @@ model Event {
   details    String
   roster     Roster     @relation(fields: [rosterId], references: [id])
   rosterId   Int
+  invitationToken String?
 
   @@index([rosterId])
 }
