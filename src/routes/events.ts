@@ -6,6 +6,7 @@ import {
   updateEvent,
   deleteEvent,
   getEventWithPlayers,
+  updatePlayerAvailability,
 } from '../controllers/eventController';
 
 const router = express.Router();
@@ -21,6 +22,9 @@ router.route('/:id')
   
 router.route('/:id/players')
   .get(getEventWithPlayers)
+
+  router.route('/:id/players/:playerId/availability')
+  .get(updatePlayerAvailability)
 
 
 export default router;
