@@ -220,7 +220,7 @@ export const getEventByInvitationToken = async (
       return;
     }
 
-    res.render('event', { event });
+    res.render('event', { event, players: event.roster.players });
   } catch (error) {
     next(error);
   }

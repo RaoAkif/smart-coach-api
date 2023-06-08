@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Event</title>
-  </head>
-  <body>
-    <h1>Event Details</h1>
-    <h2><%= event.event_type %> - <%= event.date %> <%= event.time %></h2>
-    <p><%= event.location %></p>
-    <p><%= event.details %></p>
+<head>
+  <title>Event Invitation</title>
+</head>
+<body>
+  <h1>Event Details:</h1>
+  <h2><%= event.event_type %> Event</h2>
+  <p>Date: <%= event.date %></p>
+  <p>Time: <%= event.time %></p>
+  <p>Location: <%= event.location %></p>
+  <p>Details: <%= event.details %></p>
 
-    <h2>Select Player</h2>
-    <form action="/events/<%= event.id %>/players/<%= player.id %>/availability" method="post">
-      <select name="playerId">
-        <% event.roster.players.forEach(function(player) { %>
-          <option value="<%= player.id %>"><%= player.name %></option>
-        <% }); %>
-      </select>
+  <h2>Player Availability:</h2>
+  <form method="POST" action="/events/<%= event.id %>/availability">
+    <label for="player">Select Player:</label>
+    <select name="player" id="player">
+      <% players.forEach(function(player) { %>
+        <option value="<%= player.id %>"><%= player.name %></option>
+      <% }) %>
+    </select>
 
-      <h2>Availability</h2>
-      <button type="submit" name="availability_status" value="GOING">Going</button>
-      <button type="submit" name="availability_status" value="NOT_GOING">Not Going</button>
-    </form>
-  </body>
+    <label for="availability">Availability:</label>
+    <select name="availability" id="availability">
+      <option value="GOING">Going</option>
+      <option value="NOT_GOING">Not Going</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
 </html>
