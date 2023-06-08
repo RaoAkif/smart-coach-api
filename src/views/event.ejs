@@ -12,7 +12,7 @@
   <p>Details: <%= event.details %></p>
 
   <h2>Player Availability:</h2>
-  <form method="POST" action="/events/<%= event.id %>/availability">
+  <form method="PUT" action="/api/events/<%= event.id %>/players/<%= player.id %>/availability">
     <label for="player">Select Player:</label>
     <select name="player" id="player">
       <% players.forEach(function(player) { %>
