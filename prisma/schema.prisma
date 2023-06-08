@@ -19,31 +19,43 @@ model User {
 }
 
 model Player {
-  id       Int     @id @default(autoincrement())
-  name     String
-  number   String
-  roster   Roster? @relation(fields: [rosterId], references: [id])
-  rosterId Int?
+  id                  Int                 @id @default(autoincrement())
+  name                String
+  number              String
+  availability_status Availability_Status @default(PENDING)
+  roster              Roster?             @relation(fields: [rosterId], references: [id])
+  rosterId            Int?
 
   @@index([rosterId])
 }
 
 model Roster {
-  id     Int      @id @default(autoincrement())
-  player Player[]
+  id       Int        @id @default(autoincrement())
+  players  Player[]
+  event Event[]
 }
 
-model Schedule {
+model Event {
   id         Int        @id @default(autoincrement())
   event_type Event_Type
   date       String
   time       String
   location   String
   details    String
+  roster     Roster     @relation(fields: [rosterId], references: [id])
+  rosterId   Int
+
+  @@index([rosterId])
 }
 
 enum Event_Type {
   PRACTICE
   MATCH
   OTHER
+}
+
+enum Availability_Status {
+  PENDING
+  GOING
+  NOT_GOING
 }

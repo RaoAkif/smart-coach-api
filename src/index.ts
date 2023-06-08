@@ -9,6 +9,7 @@ import authRoute from "./routes/auth";
 import userRoute from "./routes/users";
 import playerRoute from "./routes/players";
 import rosterRoute from "./routes/rosters";
+import eventRoute from "./routes/events";
 
 const app: Express = express();
 
@@ -25,6 +26,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/players", playerRoute);
 app.use("/api/rosters", rosterRoute);
+app.use("/api/events", eventRoute);
 
 const PORT = process.env.PORT || 5000;
 
