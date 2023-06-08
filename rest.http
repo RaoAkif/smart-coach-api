@@ -180,5 +180,8 @@ Content-Type: application/json
 }
 
 
+# GET https://smart-coach-api.vercel.app/api/events/:eventId/generate-invitation
+### Get an event with all players
+POST https://smart-coach-api.vercel.app/api/events/1/generate-invitation
 
 // -------- END EVENT REQUESTS -------- //
