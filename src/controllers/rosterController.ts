@@ -9,12 +9,12 @@ export const createRoster = async (req: Request, res: Response, next: NextFuncti
   try {
     const newRoster = await prisma.roster.create({
       data: {
-        player: {
+        players: {
           connect: req.body.playerIds.map((id: number) => ({ id })),
         },
       },
       include: {
-        player: true,
+        players: true,
       },
     });
     res.json(newRoster);
@@ -30,7 +30,7 @@ export const getAllRosters = async (req: Request, res: Response, next: NextFunct
   try {
     const rosters = await prisma.roster.findMany({
       include: {
-        player: true,
+        players: true,
       },
     });
     res.json(rosters);
@@ -50,7 +50,7 @@ export const getRosterById = async (req: Request, res: Response, next: NextFunct
         id: Number(id),
       },
       include: {
-        player: true,
+        players: true,
       },
     });
     res.json(roster);
@@ -72,12 +72,12 @@ export const updateRoster = async (req: Request, res: Response, next: NextFuncti
         id: Number(id),
       },
       data: {
-        player: {
+        players: {
           set: playerIds.map((id: number) => ({ id })),
         },
       },
       include: {
-        player: true,
+        players: true,
       },
     });
 
@@ -98,7 +98,7 @@ export const deleteRoster = async (req: Request, res: Response, next: NextFuncti
         id: Number(id),
       },
       include: {
-        player: true,
+        players: true,
       },
     });
     res.json(deletedRoster);
