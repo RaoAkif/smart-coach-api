@@ -9,6 +9,7 @@ import {
   updatePlayerAvailability,
   generateInvitationToken,
   getEventByInvitationToken,
+  updatePlayerAvailabilityUsingForm,
 } from '../controllers/eventController';
 
 const router = express.Router();
@@ -33,5 +34,8 @@ router.route('/:id/players')
   
 router.route('/:eventId/:invitationToken')
   .get(getEventByInvitationToken)
+
+router.route('/:eventId/players/:playerId/availability')
+.put(updatePlayerAvailabilityUsingForm);
 
 export default router;

@@ -191,6 +191,36 @@ export const updatePlayerAvailability = async (req: Request, res: Response, next
   }
 };
 
+// @desc Generate an invitation token
+// @route GET /events/:eventId/:invitationToken
+// @access Public
+export const generateInvitationToken = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const { eventId } = req.params;
+
+    // Generate a random unique hash using UUID
+    const invitationToken: string = uuidv4();
+
+    // Store the invitation token with the event in the database
+    await prisma.event.update({
+      where: {
+        id: Number(eventId),
+      },
+      data: {
+        invitationToken,
+      },
+    });
+
+    res.json({ invitationToken });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // @desc Get an event by invitation token
 // @route GET /events/:invitationToken
 // @access Public
@@ -226,28 +256,25 @@ export const getEventByInvitationToken = async (
   }
 };
 
-export const generateInvitationToken = async (
+// @desc Update player availability
+// @route PUT /events/:eventId/players/:playerId/availability
+// @access Public
+export const updatePlayerAvailabilityUsingForm = async (
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
   try {
-    const { eventId } = req.params;
+    const { eventId, playerId } = req.params;
+    const { availability } = req.body;
 
-    // Generate a random unique hash using UUID
-    const invitationToken: string = uuidv4();
-
-    // Store the invitation token with the event in the database
-    await prisma.event.update({
-      where: {
-        id: Number(eventId),
-      },
-      data: {
-        invitationToken,
-      },
+    // Update player's availability status in the database
+    const updatedPlayer = await prisma.player.update({
+      where: { id: parseInt(playerId) },
+      data: { availability_status: availability },
     });
 
-    res.json({ invitationToken });
+    res.status(200).json({ message: 'Player availability updated', player: updatedPlayer });
   } catch (error) {
     next(error);
   }
