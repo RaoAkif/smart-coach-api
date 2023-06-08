@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event</title>
+  </head>
+  <body>
+    <h1>Event Details</h1>
+    <h2><%= event.event_type %> - <%= event.date %> <%= event.time %></h2>
+    <p><%= event.location %></p>
+    <p><%= event.details %></p>
+
+    <h2>Select Player</h2>
+    <form action="/events/<%= event.id %>/players/<%= player.id %>/availability" method="post">
+      <select name="playerId">
+        <% event.roster.players.forEach(function(player) { %>
+          <option value="<%= player.id %>"><%= player.name %></option>
+        <% }); %>
+      </select>
+
+      <h2>Availability</h2>
+      <button type="submit" name="availability_status" value="GOING">Going</button>
+      <button type="submit" name="availability_status" value="NOT_GOING">Not Going</button>
+    </form>
+  </body>
+</html>
