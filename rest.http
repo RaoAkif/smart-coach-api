@@ -169,4 +169,12 @@ DELETE https://smart-coach-api.vercel.app/api/events/:id
 GET https://smart-coach-api.vercel.app/api/events/1/players
 
 
+### Update the availability status of players in an event
+# GET https://smart-coach-api.vercel.app/api/events/:id/players/:playerId/availability
+PUT https://smart-coach-api.vercel.app/api/events/1/players/1/availability
+Content-Type: application/json
+{
+  "availability_status": "GOING"
+}
+
 // -------- END EVENT REQUESTS -------- //
