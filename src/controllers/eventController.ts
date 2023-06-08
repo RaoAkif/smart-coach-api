@@ -142,3 +142,50 @@ export const getEventWithPlayers = async (req: Request, res: Response, next: Nex
     next(error);
   }
 };
+
+// @desc Update the availability status of players in an event
+// @route PUT /events/:eventId/players/:playerId/availability
+// @access Private
+export const updatePlayerAvailability = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const { eventId, playerId } = req.params;
+    const { availability_status } = req.body;
+
+    // Check if the event and player exist
+    const event = await prisma.event.findUnique({
+      where: {
+        id: Number(eventId),
+      },
+    });
+
+    if (!event) {
+      res.status(404).json({ message: 'Event not found' });
+      return;
+    }
+
+    const player = await prisma.player.findUnique({
+      where: {
+        id: Number(playerId),
+      },
+    });
+
+    if (!player) {
+      res.status(404).json({ message: 'Player not found' });
+      return;
+    }
+
+    // Update the availability status of the player in the event's roster
+    const updatedPlayer = await prisma.player.update({
+      where: {
+        id: Number(playerId),
+      },
+      data: {
+        availability_status,
+      },
+    });
+
+    res.json(updatedPlayer);
+  } catch (error) {
+    next(error);
+  }
+};
