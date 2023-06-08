@@ -30,21 +30,21 @@ model Player {
 }
 
 model Roster {
-  id      Int      @id @default(autoincrement())
-  players Player[]
-  event   Event[]
+  id       Int        @id @default(autoincrement())
+  players  Player[]
+  event Event[]
 }
 
 model Event {
-  id              Int        @id @default(autoincrement())
-  event_type      Event_Type
-  date            String
-  time            String
-  location        String
-  details         String
-  roster          Roster     @relation(fields: [rosterId], references: [id])
-  rosterId        Int
-  invitationToken String?    @unique
+  id         Int        @id @default(autoincrement())
+  event_type Event_Type
+  date       String
+  time       String
+  location   String
+  details    String
+  roster     Roster     @relation(fields: [rosterId], references: [id])
+  rosterId   Int
+  invitationToken String?
 
   @@index([rosterId])
 }

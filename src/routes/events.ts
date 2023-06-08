@@ -8,7 +8,6 @@ import {
   getEventWithPlayers,
   updatePlayerAvailability,
   generateInvitationToken,
-  getEventByInvitationToken,
 } from '../controllers/eventController';
 
 const router = express.Router();
@@ -24,14 +23,11 @@ router.route('/:id')
   
 router.route('/:id/players')
   .get(getEventWithPlayers)
-  
-  router.route('/:eventId/players/:playerId/availability')
+
+router.route('/:eventId/players/:playerId/availability')
   .put(updatePlayerAvailability)
-  
-  router.route('/:eventId/generate-invitation')
+
+router.route('/:eventId/generate-invitation')
   .post(generateInvitationToken)
-  
-router.route('/:eventId/:invitationToken')
-  .get(getEventByInvitationToken)
 
 export default router;
