@@ -23,7 +23,7 @@ router.route('/:id')
 router.route('/:id/players')
   .get(getEventWithPlayers)
 
-  router.route('/:id/players/:playerId/availability')
+  router.route('/:eventId/players/:playerId/availability')
   .get(updatePlayerAvailability)
 
 
