@@ -172,7 +172,7 @@ GET https://smart-coach-api.vercel.app/api/events/1/players
 # GET https://smart-coach-api.vercel.app/api/events/:id/players/:playerId/availability
 
 ### Update the availability status of players in an event
-PUT http://localhost:8000/api/events/1/players/1/availability
+PUT https://smart-coach-api.vercel.app/api/events/1/players/1/availability
 Content-Type: application/json
 
 {

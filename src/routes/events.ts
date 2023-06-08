@@ -24,7 +24,7 @@ router.route('/:id/players')
   .get(getEventWithPlayers)
 
   router.route('/:eventId/players/:playerId/availability')
-  .get(updatePlayerAvailability)
+  .put(updatePlayerAvailability)
 
 
 export default router;
