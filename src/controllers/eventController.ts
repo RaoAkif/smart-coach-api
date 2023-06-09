@@ -191,8 +191,8 @@ export const updatePlayerAvailability = async (req: Request, res: Response, next
   }
 };
 
-// @desc Generate an invitation token
-// @route GET /events/:eventId/:invitationToken
+// @desc Get an invitation token
+// @route GET /events/:eventId/generate-token
 // @access Public
 export const generateInvitationToken = async (
   req: Request,
@@ -221,27 +221,20 @@ export const generateInvitationToken = async (
   }
 };
 
-// @desc Get an event by invitation token
-// @route GET /events/:invitationToken
+// @desc Show event invitation form
+// @route GET /events/:eventId/:invitationToken
 // @access Public
-export const getEventByInvitationToken = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
+export const showEventInvitation = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { invitationToken } = req.params;
+    const { eventId, invitationToken } = req.params;
 
-    const event = await prisma.event.findUnique({
+    // Retrieve the event based on the provided event ID and invitation token
+    const event = await prisma.event.findFirst({
       where: {
-        invitationToken,
-      },
-      include: {
-        roster: {
-          include: {
-            players: true,
-          },
-        },
+        AND: [
+          { id: Number(eventId) },
+          { invitationToken },
+        ],
       },
     });
 
@@ -250,31 +243,75 @@ export const getEventByInvitationToken = async (
       return;
     }
 
-    res.render('event', { event, players: event.roster.players });
+    // Retrieve the roster and its players
+    const roster = await prisma.roster.findUnique({
+      where: {
+        id: event.rosterId,
+      },
+      include: {
+        players: true,
+      },
+    });
+
+    if (!roster) {
+      res.status(404).json({ message: 'Roster not found' });
+      return;
+    }
+
+    res.render('invitation', { event, players: roster.players });
   } catch (error) {
     next(error);
   }
 };
 
-// @desc Update player availability
-// @route PUT /events/:eventId/players/:playerId/availability
+// @desc Update player availability from event invitation
+// @route POST /events/:eventId/players/availability
 // @access Public
-export const updatePlayerAvailabilityUsingForm = async (
+export const updatePlayerAvailabilityFromInvitation = async (
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
   try {
-    const { eventId, playerId } = req.params;
-    const { availability } = req.body;
-
-    // Update player's availability status in the database
-    const updatedPlayer = await prisma.player.update({
-      where: { id: parseInt(playerId) },
-      data: { availability_status: availability },
+    const { eventId } = req.params;
+    const { playerId, playerName, availability } = req.body;
+    console.log(playerId)
+    
+    // Check if the event exists
+    const event = await prisma.event.findUnique({
+      where: {
+        id: Number(eventId),
+      },
     });
 
-    res.status(200).json({ message: 'Player availability updated', player: updatedPlayer });
+    if (!event) {
+      res.status(404).json({ message: 'Event not found' });
+      return;
+    }
+
+    // Check if the player exists
+    const playerExists = await prisma.player.findUnique({
+      where: {
+        id: Number(playerId),
+      },
+    });
+
+    if (!playerExists) {
+      res.status(404).json({ message: 'Player not found' });
+      return;
+    }
+
+    // Update the availability status of the player in the event's roster
+    await prisma.player.update({
+      where: {
+        id: Number(playerId),
+      },
+      data: {
+        availability_status: availability,
+      },
+    });
+
+    res.redirect('/api/events/1/players'); // Redirect to a success page or any other desired page
   } catch (error) {
     next(error);
   }
