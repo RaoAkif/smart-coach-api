@@ -5,7 +5,91 @@
 <head>
   <title>Event Invitation</title>
   <style>
-    /* Add your custom CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+
+    h2 {
+      color: #555;
+    }
+
+    .event-details {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    .event-details p {
+      margin: 0;
+    }
+
+    .player-availability {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    button.going {
+      background-color: green;
+    }
+
+    button.not-going {
+      background-color: red;
+    }
+
+    button:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    /* Mobile Responsive Styles */
+    @media only screen and (max-width: 600px) {
+      .container {
+        width: 100%;
+        padding: 0 10px;
+      }
+
+      select {
+        font-size: 14px;
+      }
+    }
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery library -->
   <script>
@@ -30,31 +114,35 @@
   </script>
 </head>
 <body>
-  <h1>Event Invitation</h1>
+  <div class="container">
+    <h1>Event Invitation</h1>
 
-  <div>
-    <h2>Event Details</h2>
-    <p>Date: <%= event.date %></p>
-    <p>Time: <%= event.time %></p>
-    <p>Location: <%= event.location %></p>
-    <p>Details: <%= event.details %></p>
+    <div class="event-details">
+      <h2>Event Details</h2>
+      <p>Date: <%= event.date %></p>
+      <p>Time: <%= event.time %></p>
+      <p>Location: <%= event.location %></p>
+      <p>Details: <%= event.details %></p>
+    </div>
+
+    <div class="player-availability">
+      <h2>Player Availability</h2>
+      <form action="/api/events/<%= event.id %>/players/availability" method="POST">
+        <!-- Method Override: Hidden input field for PUT request -->
+        <!-- <input type="hidden" name="_method" value="PUT"> -->
+        
+        <input type="hidden" name="invitationToken" value="<%= event.invitationToken %>">
+        <label for="player">Select a player:</label>
+        <select id="player" name="playerId">
+          <% players.forEach(player => { %>
+            <option value="<%= player.id %>"><%= player.name %> - <%= player.id %></option>
+          <% }); %>
+        </select>
+        <br>
+        <button type="submit" name="availability" value="GOING" class="going">Going</button>
+        <button type="submit" name="availability" value="NOT_GOING" class="not-going">Not Going</button>
+      </form>
+    </div>
   </div>
-
-  <h2>Player Availability</h2>
-  <form action="/api/events/<%= event.id %>/players/availability" method="POST">
-    <!-- Method Override: Hidden input field for PUT request -->
-    <!-- <input type="hidden" name="_method" value="PUT"> -->
-    
-    <input type="hidden" name="invitationToken" value="<%= event.invitationToken %>">
-    <label for="player">Select a player:</label>
-    <select id="player" name="playerId">
-      <% players.forEach(player => { %>
-        <option value="<%= player.id %>"><%= player.name %> - <%= player.id %></option>
-      <% }); %>
-    </select>
-    <br>
-    <button type="submit" name="availability" value="GOING">Going</button>
-    <button type="submit" name="availability" value="NOT_GOING">Not Going</button>
-  </form>
 </body>
 </html>
