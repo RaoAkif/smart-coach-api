@@ -1,0 +1,60 @@
+<!-- invitation.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Invitation</title>
+  <style>
+    /* Add your custom CSS styles here */
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery library -->
+  <script>
+    // JavaScript/jQuery code to update hidden input fields based on selected player
+    $(document).ready(function() {
+      // Function to update hidden input fields
+      function updateHiddenFields() {
+        var selectedPlayer = $('#player').val(); // Get the selected player value
+        var selectedPlayerName = $('#player option:selected').text(); // Get the selected player name
+        $('#playerId').val(selectedPlayer); // Update the playerId hidden input field
+        $('#playerName').val(selectedPlayerName); // Update the playerName hidden input field
+      }
+
+      // Event listener for player selection change
+      $('#player').on('change', function() {
+        updateHiddenFields(); // Call the function to update hidden input fields
+      });
+
+      // Initial update of hidden input fields on page load
+      updateHiddenFields();
+    });
+  </script>
+</head>
+<body>
+  <h1>Event Invitation</h1>
+
+  <div>
+    <h2>Event Details</h2>
+    <p>Date: <%= event.date %></p>
+    <p>Time: <%= event.time %></p>
+    <p>Location: <%= event.location %></p>
+    <p>Details: <%= event.details %></p>
+  </div>
+
+  <h2>Player Availability</h2>
+  <form action="/api/events/<%= event.id %>/players/availability" method="POST">
+    <!-- Method Override: Hidden input field for PUT request -->
+    <!-- <input type="hidden" name="_method" value="PUT"> -->
+    
+    <input type="hidden" name="invitationToken" value="<%= event.invitationToken %>">
+    <label for="player">Select a player:</label>
+    <select id="player" name="playerId">
+      <% players.forEach(player => { %>
+        <option value="<%= player.id %>"><%= player.name %> - <%= player.id %></option>
+      <% }); %>
+    </select>
+    <br>
+    <button type="submit" name="availability" value="GOING">Going</button>
+    <button type="submit" name="availability" value="NOT_GOING">Not Going</button>
+  </form>
+</body>
+</html>
