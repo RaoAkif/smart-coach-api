@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import cors from 'cors';
+import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import corsOptions from './config/corsOptions';
 import path from 'path';
@@ -20,6 +21,8 @@ app.set('view engine', 'ejs');
 app.use(cors(corsOptions))
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
 
 app.use(cookieParser())
 
