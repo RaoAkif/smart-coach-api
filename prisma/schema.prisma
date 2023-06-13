@@ -20,16 +20,19 @@ model User {
 
 model Player {
   id                  Int                 @id @default(autoincrement())
+  username            String
   name                String
   number              String
+  password            String
+  position            Position
   availability_status Availability_Status @default(PENDING)
-  roster              Roster?             @relation(fields: [rosterId], references: [id])
-  rosterId            Int?
+  team                Team?               @relation(fields: [teamId], references: [id])
+  teamId              Int?
 
-  @@index([rosterId])
+  @@index([teamId])
 }
 
-model Roster {
+model Team {
   id      Int      @id @default(autoincrement())
   players Player[]
   event   Event[]
@@ -42,11 +45,11 @@ model Event {
   time            String
   location        String
   details         String
-  roster          Roster     @relation(fields: [rosterId], references: [id])
-  rosterId        Int
+  team            Team       @relation(fields: [teamId], references: [id])
+  teamId          Int
   invitationToken String?    @unique
 
-  @@index([rosterId])
+  @@index([teamId])
 }
 
 enum Event_Type {
@@ -59,4 +62,16 @@ enum Availability_Status {
   PENDING
   GOING
   NOT_GOING
+}
+
+enum Position {
+  GOAL_KEEPER
+  FULL_BACK_RIGHT
+  FULL_BACK_LEFT
+  CENTRE_BACK
+  SWEEPER
+  DEFENSIVE_MIDFIELD_RIGHT
+  DEFENSIVE_MIDFIELD_LEFT
+  SECOND_STRIKER
+  CENTRE_FORWARD
 }
