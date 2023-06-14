@@ -20,8 +20,9 @@ model Coach {
 
 model Player {
   id                  Int                 @id @default(autoincrement())
-  username            String
   name                String
+  username            String              @unique
+  email               String              @unique
   number              String
   password            String
   position            Position
@@ -39,14 +40,14 @@ model Team {
 }
 
 model Event {
-  id              Int        @id @default(autoincrement())
-  event_type      Event_Type
-  date            String
-  time            String
-  location        String
-  details         String
-  Team   Team? @relation(fields: [teamId], references: [id])
-  teamId Int?
+  id         Int        @id @default(autoincrement())
+  event_type Event_Type
+  date       String
+  time       String
+  location   String
+  details    String
+  Team       Team?      @relation(fields: [teamId], references: [id])
+  teamId     Int?
 
   @@index([teamId])
 }

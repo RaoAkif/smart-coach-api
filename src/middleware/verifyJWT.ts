@@ -3,6 +3,7 @@ import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
 
 interface AuthenticatedRequest extends Request {
     coach?: string;
+    player?: string;
 }
 
 export const verifyJWT = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
@@ -24,12 +25,20 @@ export const verifyJWT = (req: AuthenticatedRequest, res: Response, next: NextFu
         token,
         process.env.ACCESS_TOKEN_SECRET as Secret,
         (err, decoded) => {
-            if (err || !decoded || typeof decoded !== 'object' || !('CoachInfo' in decoded)) {
+            if (err || !decoded || typeof decoded !== 'object') {
                 return res.status(403).json({ message: 'Forbidden' });
             }
 
-            const decodedPayload = decoded as JwtPayload;
-            req.coach = decodedPayload.CoachInfo.username;
+            if ('CoachInfo' in decoded) {
+                const decodedPayload = decoded as JwtPayload;
+                req.coach = decodedPayload.CoachInfo.username;
+            } else if ('PlayerInfo' in decoded) {
+                const decodedPayload = decoded as JwtPayload;
+                req.player = decodedPayload.PlayerInfo.username;
+            } else {
+                return res.status(403).json({ message: 'Forbidden' });
+            }
+
             next();
         }
     );

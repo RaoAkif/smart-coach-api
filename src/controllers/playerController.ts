@@ -8,13 +8,14 @@ import { generatePassword } from "../utils/passwordUtils"
 // @access Private
 export const addPlayer = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { username, name, number, position, teamId } = req.body;
+    const { name, username, email, number, position } = req.body;
     const password = generatePassword(); // Generate a random password using a utility function
 
     const newPlayer = await prisma.player.create({
       data: {
-        username,
         name,
+        username,
+        email,
         number,
         password,
         position,
@@ -62,15 +63,16 @@ export const getPlayerById = async (req: Request, res: Response, next: NextFunct
 export const updatePlayer = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
-    const { username, name, number, password, position, teamId } = req.body;
+    const { name, username, email, password, number, position } = req.body;
 
     const updatedPlayer = await prisma.player.update({
       where: {
         id: Number(id),
       },
       data: {
-        username,
         name,
+        username,
+        email,
         number,
         password,
         position,

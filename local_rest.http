@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ### LOGIN COACH
-POST http://localhost:8000/api/auth/login
+POST http://localhost:8000/api/auth/coach/login
 Content-Type: application/json
 
 {
@@ -23,20 +23,29 @@ Content-Type: application/json
   "password": "123456"
 }
 
+### LOGIN PLAYER
+POST http://localhost:8000/api/auth/player/login
+Content-Type: application/json
+
+{
+  "username": "johndoe",
+  "password": "7J$11^xA"
+}
+
 ### GET ALL COACHES
 GET http://localhost:8000/api/coaches
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 ### GET COACH BY ID
 GET http://localhost:8000/api/coaches/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 ### EDIT COACH
 PUT http://localhost:8000/api/coaches/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 {
   "name": "Coach 01",
@@ -48,7 +57,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 ### DELETE A COACH
 DELETE http://localhost:8000/api/coaches/3
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 // -------- END COACHES REQUESTS -------- //
 
 # ---------------------------------------------------------
@@ -58,27 +67,30 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 ### Create a new Player
 POST http://localhost:8000/api/players
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
-
-{
-  "username": "jennydoe",
-  "name": "Jenny Doe",
-  "number": "+923330508717",
-  "position": "FULL_BACK_RIGHT",
-  "availability_status": "PENDING"
-}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 # {
-#   "username": "johndoe",
 #   "name": "John Doe",
+#   "username": "johndoe",
+#   "email": "johndoe@gmail.com",
 #   "number": "+923330508717",
 #   "position": "GOAL_KEEPER",
 #   "availability_status": "PENDING"
 # }
 
+{
+  "name": "Jenny Doe",
+  "username": "jennydoe",
+  "email": "jennydoe@gmail.com",
+  "number": "+923330508717",
+  "position": "FULL_BACK_RIGHT",
+  "availability_status": "PENDING"
+}
+
+
 ### Get all players
 GET http://localhost:8000/api/players
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 ### Get a player by ID
 GET http://localhost:8000/api/players/:id
@@ -106,7 +118,7 @@ DELETE http://localhost:8000/api/players/:id
 ### Create a new Team
 POST http://localhost:8000/api/teams
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 {
   "playerIds": [1, 2]
@@ -150,7 +162,7 @@ GET http://localhost:8000/api/teams/1/players
 ### Create a new Event
 POST http://localhost:8000/api/events
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 {
   "event_type": "MATCH",

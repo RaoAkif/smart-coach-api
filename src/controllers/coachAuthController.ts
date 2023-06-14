@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 // @desc Login a new coach
 // @route POST /coaches
 // @access Private
-export const login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const loginCoach = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const coach = await prisma.coach.findUnique({
       where: {
@@ -15,7 +15,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
       }
     })
     if (coach) {
-      const validPassword = await (req.body.password, coach.password);
+      const validPassword = req.body.password === coach.password;
 
       if (validPassword) {
         const accessToken = jwt.sign(
@@ -57,7 +57,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
 // @desc Refresh access token
 // @route POST /auth/refresh
 // @access Public
-export const refresh = async (req: Request, res: Response, next: NextFunction): Promise<Response> => {
+export const refreshCoach = async (req: Request, res: Response, next: NextFunction): Promise<Response> => {
   try {
     const refreshToken = req.cookies.jwt;
 
@@ -103,7 +103,7 @@ export const refresh = async (req: Request, res: Response, next: NextFunction): 
 // @desc Logout coach and clear cookies
 // @route POST /auth/logout
 // @access Public
-export const logout = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const logoutCoach = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   res.clearCookie('jwt', {
     httpOnly: true,
     secure: true,
