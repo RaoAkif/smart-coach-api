@@ -1,13 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
-import { PrismaClient, Roster, Player } from '@prisma/client';
+import { PrismaClient, Team, Player } from '@prisma/client';
 const prisma = new PrismaClient();
 
-// @desc Create a new Roster
-// @route POST /rosters
+// @desc Create a new Team
+// @route POST /teams
 // @access Private
-export const createRoster = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const createTeam = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const newRoster = await prisma.roster.create({
+    const newTeam = await prisma.team.create({
       data: {
         players: {
           connect: req.body.playerIds.map((id: number) => ({ id })),
@@ -17,35 +17,35 @@ export const createRoster = async (req: Request, res: Response, next: NextFuncti
         players: true,
       },
     });
-    res.json(newRoster);
+    res.json(newTeam);
   } catch (error) {
     next(error);
   }
 };
 
-// @desc Get all rosters
-// @route GET /rosters
+// @desc Get all teams
+// @route GET /teams
 // @access Private
-export const getAllRosters = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getAllTeams = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const rosters = await prisma.roster.findMany({
+    const teams = await prisma.team.findMany({
       include: {
         players: true,
       },
     });
-    res.json(rosters);
+    res.json(teams);
   } catch (error) {
     next(error);
   }
 };
 
-// @desc Get a roster by ID
-// @route GET /rosters/:id
+// @desc Get a team by ID
+// @route GET /teams/:id
 // @access Private
-export const getRosterById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getTeamById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
-    const roster = await prisma.roster.findUnique({
+    const team = await prisma.team.findUnique({
       where: {
         id: Number(id),
       },
@@ -53,21 +53,21 @@ export const getRosterById = async (req: Request, res: Response, next: NextFunct
         players: true,
       },
     });
-    res.json(roster);
+    res.json(team);
   } catch (error) {
     next(error);
   }
 };
 
-// @desc Update a roster
-// @route PUT /rosters/:id
+// @desc Update a team
+// @route PUT /teams/:id
 // @access Private
-export const updateRoster = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const updateTeam = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
     const { playerIds } = req.body;
 
-    const updatedRoster = await prisma.roster.update({
+    const updatedTeam = await prisma.team.update({
       where: {
         id: Number(id),
       },
@@ -81,19 +81,19 @@ export const updateRoster = async (req: Request, res: Response, next: NextFuncti
       },
     });
 
-    res.json(updatedRoster);
+    res.json(updatedTeam);
   } catch (error) {
     next(error);
   }
 };
 
-// @desc Delete a roster
-// @route DELETE /rosters/:id
+// @desc Delete a team
+// @route DELETE /teams/:id
 // @access Private
-export const deleteRoster = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const deleteTeam = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
-    const deletedRoster = await prisma.roster.delete({
+    const deletedTeam = await prisma.team.delete({
       where: {
         id: Number(id),
       },
@@ -101,21 +101,21 @@ export const deleteRoster = async (req: Request, res: Response, next: NextFuncti
         players: true,
       },
     });
-    res.json(deletedRoster);
+    res.json(deletedTeam);
   } catch (error) {
     next(error);
   }
 };
 
-// @desc Get all players in a roster
-// @route GET /rosters/:id/players
+// @desc Get all players in a team
+// @route GET /teams/:id/players
 // @access Private
-export const getPlayersInRoster = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const getPlayersInTeam = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
     const players = await prisma.player.findMany({
       where: {
-        rosterId: Number(id),
+        teamId: Number(id),
       },
     });
     res.json(players);

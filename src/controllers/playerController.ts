@@ -7,15 +7,18 @@ const prisma = new PrismaClient();
 // @access Private
 export const addPlayer = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { name, number, rosterId } = req.body;
+    const { username, name, number, password, position, teamId } = req.body;
 
     const newPlayer = await prisma.player.create({
       data: {
+        username,
         name,
         number,
-        roster: {
+        password,
+        position,
+        team: {
           connect: {
-            id: rosterId,
+            id: teamId,
           },
         },
       },
@@ -62,18 +65,21 @@ export const getPlayerById = async (req: Request, res: Response, next: NextFunct
 export const updatePlayer = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
-    const { name, number, rosterId } = req.body;
+    const { username, name, number, password, position, teamId } = req.body;
 
     const updatedPlayer = await prisma.player.update({
       where: {
         id: Number(id),
       },
       data: {
+        username,
         name,
         number,
-        roster: {
+        password,
+        position,
+        team: {
           connect: {
-            id: rosterId,
+            id: teamId,
           },
         },
       },

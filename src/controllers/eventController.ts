@@ -9,7 +9,7 @@ const prisma = new PrismaClient();
 // @access Private
 export const addEvent = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { event_type, date, time, location, details, rosterId } = req.body;
+    const { event_type, date, time, location, details, teamId } = req.body;
 
     const newEvent = await prisma.event.create({
       data: {
@@ -18,9 +18,9 @@ export const addEvent = async (req: Request, res: Response, next: NextFunction):
         time,
         location,
         details,
-        roster: {
+        team: {
           connect: {
-            id: rosterId,
+            id: teamId,
           },
         },
       },
@@ -67,7 +67,7 @@ export const getEventById = async (req: Request, res: Response, next: NextFuncti
 export const updateEvent = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
-    const { event_type, date, time, location, details, rosterId } = req.body;
+    const { event_type, date, time, location, details, teamId } = req.body;
 
     const updatedEvent = await prisma.event.update({
       where: {
@@ -79,9 +79,9 @@ export const updateEvent = async (req: Request, res: Response, next: NextFunctio
         time,
         location,
         details,
-        roster: {
+        team: {
           connect: {
-            id: rosterId,
+            id: teamId,
           },
         },
       },
@@ -112,20 +112,20 @@ export const deleteEvent = async (req: Request, res: Response, next: NextFunctio
   }
 };
 
-// @desc Get an event and its players in the roster
+// @desc Get an event and its players in the team
 // @route GET /events/:id/players
 // @access Private
 export const getEventWithPlayers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const eventId = Number(req.params.id);
 
-    // Retrieve the event and include the associated roster and players
+    // Retrieve the event and include the associated team and players
     const eventWithPlayers = await prisma.event.findUnique({
       where: {
         id: eventId,
       },
       include: {
-        roster: {
+        team: {
           include: {
             players: true,
           },
@@ -175,7 +175,7 @@ export const updatePlayerAvailability = async (req: Request, res: Response, next
       return;
     }
 
-    // Update the availability status of the player in the event's roster
+    // Update the availability status of the player in the event's team
     const updatedPlayer = await prisma.player.update({
       where: {
         id: Number(playerId),
@@ -243,22 +243,22 @@ export const showEventInvitation = async (req: Request, res: Response, next: Nex
       return;
     }
 
-    // Retrieve the roster and its players
-    const roster = await prisma.roster.findUnique({
+    // Retrieve the team and its players
+    const team = await prisma.team.findUnique({
       where: {
-        id: event.rosterId,
+        id: event.teamId,
       },
       include: {
         players: true,
       },
     });
 
-    if (!roster) {
-      res.status(404).json({ message: 'Roster not found' });
+    if (!team) {
+      res.status(404).json({ message: 'Team not found' });
       return;
     }
 
-    res.render('invitation', { event, players: roster.players });
+    res.render('invitation', { event, players: team.players });
   } catch (error) {
     next(error);
   }
@@ -301,7 +301,7 @@ export const updatePlayerAvailabilityFromInvitation = async (
       return;
     }
 
-    // Update the availability status of the player in the event's roster
+    // Update the availability status of the player in the event's team
     await prisma.player.update({
       where: {
         id: Number(playerId),
