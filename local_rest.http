@@ -1,41 +1,42 @@
-// -------- START USERS REQUESTS -------- //
-### GET ALL USERS
-GET http://localhost:8000/api/users
+// -------- START COACHES REQUESTS -------- //
+### GET ALL COACHES
+GET http://localhost:8000/api/coaches
 Content-Type: application/json
 
 ### REGISTER A USER
-POST http://localhost:8000/api/auth/register
+POST http://localhost:8000/api/coaches/register
 Content-Type: application/json
 
 {
-  "name": "Rao Akif 02",
-  "username": "raoakif02",
-  "email": "akifrao02@gmail.com",
+  "name": "Coach 01",
+  "username": "coach01",
+  "email": "coach01@gmail.com",
   "password": "123456"
 }
 
 ### LOGIN USER
-POST http://localhost:8000/api/auth/
+POST http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
-  "pseudonym": "raoakif",
+  "username": "coach01",
   "password": "123456"
 }
 
-### GET ALL USERS
-GET http://localhost:8000/api/users
+### GET ALL COACHES
+GET http://localhost:8000/api/coaches
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
 
 ### GET USER BY ID
-GET http://localhost:8000/api/users/3
+GET http://localhost:8000/api/coaches/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
 
 ### EDIT USER
-PUT http://localhost:8000/api/users/1
+PUT http://localhost:8000/api/coaches/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
 
 {
     "pseudonym": "raoakif",
@@ -45,10 +46,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc
 }
 
 ### DELETE A USER
-DELETE http://localhost:8000/api/users/3
+DELETE http://localhost:8000/api/coaches/3
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
-// -------- END USERS REQUESTS -------- //
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+// -------- END COACHES REQUESTS -------- //
 
 # ---------------------------------------------------------
 
@@ -58,7 +59,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc
 
 
 ### REGISTER A USER
-POST http://localhost:8000/api/users
+POST http://localhost:8000/api/coaches
 Content-Type: application/json
 
 {

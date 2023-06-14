@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Router } from 'express';
 import {
   addPlayer,
   getAllPlayers,
@@ -8,9 +8,10 @@ import {
 } from '../controllers/playerController';
 import { verifyJWT } from "../middleware/verifyJWT"
 
-const router = express.Router();
+const router: Router = express.Router();
 
-router.use(verifyJWT)
+// Apply verifyJWT middleware to all routes below this line
+router.use(verifyJWT);
 
 router.route('/')
   .post(addPlayer)

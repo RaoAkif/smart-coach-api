@@ -1,14 +1,14 @@
 import express, { Router } from 'express';
-const router: Router = express.Router();
-import { registerCoach, getAllCoaches, getCoachById, updateCoach, deleteCoach } from "../controllers/coachController"
-import { verifyJWT } from "../middleware/verifyJWT"
+import { registerCoach, getAllCoaches, getCoachById, updateCoach, deleteCoach } from "../controllers/coachController";
+import { verifyJWT } from "../middleware/verifyJWT";
 
-router.use(verifyJWT)
+const router: Router = express.Router();
 
 // Register
-router.route("/register")
-  .post(registerCoach);
+router.route("/register").post(registerCoach);
 
+// Apply verifyJWT middleware to all routes below this line
+router.use(verifyJWT);
 
 router.route("/")
   .get(getAllCoaches)

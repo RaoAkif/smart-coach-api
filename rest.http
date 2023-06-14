@@ -1,6 +1,6 @@
-// -------- START USERS REQUESTS -------- //
-### GET ALL USERS
-GET https://smart-coach-api.vercel.app/api/users
+// -------- START COACHES REQUESTS -------- //
+### GET ALL COACHES
+GET https://smart-coach-api.vercel.app/api/coaches
 Content-Type: application/json
 
 ### REGISTER A USER
@@ -23,17 +23,17 @@ Content-Type: application/json
   "password": "123456"
 }
 
-### GET ALL USERS
-GET https://smart-coach-api.vercel.app/api/users
+### GET ALL COACHES
+GET https://smart-coach-api.vercel.app/api/coaches
 Content-Type: application/json
 
 ### GET USER BY ID
-GET https://smart-coach-api.vercel.app/api/users/3
+GET https://smart-coach-api.vercel.app/api/coaches/3
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
 
 ### EDIT USER
-PUT https://smart-coach-api.vercel.app/api/users/1
+PUT https://smart-coach-api.vercel.app/api/coaches/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
 
@@ -45,17 +45,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc
 }
 
 ### DELETE A USER
-DELETE https://smart-coach-api.vercel.app/api/users/3
+DELETE https://smart-coach-api.vercel.app/api/coaches/3
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
-// -------- END USERS REQUESTS -------- //
+// -------- END COACHES REQUESTS -------- //
 
 # ---------------------------------------------------------
 
 // -------- START ROSTER REQUESTS -------- //
 
 ### Create a new Roster
-POST https://smart-coach-api.vercel.app/api/rosters
+POST https://smart-coach-api.vercel.app/api/teams
 Content-Type: application/json
 
 {
@@ -63,18 +63,18 @@ Content-Type: application/json
 }
 
 
-### Get all rosters
-GET https://smart-coach-api.vercel.app/api/rosters
+### Get all teams
+GET https://smart-coach-api.vercel.app/api/teams
 
 
 
 ### Get a roster by ID
-GET https://smart-coach-api.vercel.app/api/rosters/:id
+GET https://smart-coach-api.vercel.app/api/teams/:id
 
 
 
 ### Update a roster
-PUT https://smart-coach-api.vercel.app/api/rosters/:id
+PUT https://smart-coach-api.vercel.app/api/teams/:id
 Content-Type: application/json
 
 {
@@ -83,12 +83,12 @@ Content-Type: application/json
 
 
 ### Delete a roster
-DELETE https://smart-coach-api.vercel.app/api/rosters/:id
+DELETE https://smart-coach-api.vercel.app/api/teams/:id
 
 
 ### Get all players in a roster
-# GET https://smart-coach-api.vercel.app/api/rosters/:id/players
-GET https://smart-coach-api.vercel.app/api/rosters/1/players
+# GET https://smart-coach-api.vercel.app/api/teams/:id/players
+GET https://smart-coach-api.vercel.app/api/teams/1/players
 
 
 // -------- END ROSTER REQUESTS -------- //

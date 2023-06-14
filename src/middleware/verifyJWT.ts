@@ -3,7 +3,6 @@ import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
 
 interface AuthenticatedRequest extends Request {
     coach?: string;
-    roles?: string[];
 }
 
 export const verifyJWT = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
@@ -31,10 +30,7 @@ export const verifyJWT = (req: AuthenticatedRequest, res: Response, next: NextFu
 
             const decodedPayload = decoded as JwtPayload;
             req.coach = decodedPayload.CoachInfo.username;
-            req.roles = decodedPayload.CoachInfo.roles;
             next();
         }
     );
 };
-
-module.exports = verifyJWT;
