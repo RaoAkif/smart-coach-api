@@ -4,13 +4,10 @@ import jwt, { Secret } from 'jsonwebtoken';
 
 const prisma = new PrismaClient();
 
-console.log('ACCESS_TOKEN_SECRET:', process.env.ACCESS_TOKEN_SECRET);
-console.log('REFRESH_TOKEN_SECRET:', process.env.REFRESH_TOKEN_SECRET);
-
 // @desc Login a new coach
 // @route POST /coaches
 // @access Private
-export const loginCoach = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+export const login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const coach = await prisma.coach.findUnique({
       where: {
@@ -56,3 +53,62 @@ export const loginCoach = async (req: Request, res: Response, next: NextFunction
     next(error);
   }
 };
+
+// @desc Refresh access token
+// @route POST /auth/refresh
+// @access Public
+export const refresh = async (req: Request, res: Response, next: NextFunction): Promise<Response> => {
+  try {
+    const refreshToken = req.cookies.jwt;
+
+    if (!refreshToken) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    const decoded = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET as Secret) as { username: string };
+
+    if (typeof decoded !== 'object' || !('username' in decoded)) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    const coach = await prisma.coach.findUnique({
+      where: {
+        username: decoded.username
+      }
+    });
+
+    if (!coach) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    const accessToken = jwt.sign(
+      {
+        "CoachInfo": {
+          "username": coach.username
+        }
+      },
+      process.env.ACCESS_TOKEN_SECRET as Secret,
+      { expiresIn: '15m' }
+    );
+
+    return res.json({ accessToken });
+  } catch (error) {
+    next(error);
+  }
+
+  // Add the following return statement as the last line
+  throw new Error('Unexpected error occurred'); // You can replace this with an appropriate error response
+};
+
+// @desc Logout coach and clear cookies
+// @route POST /auth/logout
+// @access Public
+export const logout = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  res.clearCookie('jwt', {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+  })
+
+  res.status(204).json({ message: 'Logout successful' })
+}
