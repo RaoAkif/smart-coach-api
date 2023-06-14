@@ -26,7 +26,7 @@ model Player {
   password            String
   position            Position
   availability_status Availability_Status @default(PENDING)
-  team                Team?               @relation(fields: [teamId], references: [id])
+  Team                Team?               @relation(fields: [teamId], references: [id])
   teamId              Int?
 
   @@index([teamId])
@@ -45,9 +45,8 @@ model Event {
   time            String
   location        String
   details         String
-  team            Team       @relation(fields: [teamId], references: [id])
-  teamId          Int
-  invitationToken String?    @unique
+  Team   Team? @relation(fields: [teamId], references: [id])
+  teamId Int?
 
   @@index([teamId])
 }

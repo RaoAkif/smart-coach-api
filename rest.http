@@ -52,9 +52,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc
 
 # ---------------------------------------------------------
 
-// -------- START ROSTER REQUESTS -------- //
+// -------- START TEAM REQUESTS -------- //
 
-### Create a new Roster
+### Create a new Team
 POST https://smart-coach-api.vercel.app/api/teams
 Content-Type: application/json
 
@@ -68,12 +68,12 @@ GET https://smart-coach-api.vercel.app/api/teams
 
 
 
-### Get a roster by ID
+### Get a team by ID
 GET https://smart-coach-api.vercel.app/api/teams/:id
 
 
 
-### Update a roster
+### Update a team
 PUT https://smart-coach-api.vercel.app/api/teams/:id
 Content-Type: application/json
 
@@ -82,17 +82,18 @@ Content-Type: application/json
 }
 
 
-### Delete a roster
+### Delete a team
 DELETE https://smart-coach-api.vercel.app/api/teams/:id
 
 
-### Get all players in a roster
+### Get all players in a team
 # GET https://smart-coach-api.vercel.app/api/teams/:id/players
 GET https://smart-coach-api.vercel.app/api/teams/1/players
 
 
-// -------- END ROSTER REQUESTS -------- //
+// -------- END TEAM REQUESTS -------- //
 
+# ---------------------------------------------------------
 
 // -------- START PLAYER REQUESTS -------- //
 
@@ -127,6 +128,7 @@ DELETE https://smart-coach-api.vercel.app/api/players/:id
 
 // -------- END PLAYER REQUESTS -------- //
 
+# ---------------------------------------------------------
 
 // -------- START EVENT REQUESTS -------- //
 
@@ -140,7 +142,7 @@ Content-Type: application/json
   "time": "15:00",
   "location": "Stadium XYZ",
   "details": "Important match against Team ABC",
-  "rosterId": 1
+  "teamId": 1
 }
 
 ### Get all events
@@ -159,7 +161,7 @@ Content-Type: application/json
   "time": "10:00",
   "location": "Training Ground",
   "details": "Practice session for upcoming match",
-  "rosterId": 1
+  "teamId": 1
 }
 
 ### Delete an event

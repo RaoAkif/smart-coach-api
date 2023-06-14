@@ -3,7 +3,7 @@
 GET http://localhost:8000/api/coaches
 Content-Type: application/json
 
-### REGISTER A USER
+### REGISTER A COACH
 POST http://localhost:8000/api/coaches/register
 Content-Type: application/json
 
@@ -14,7 +14,7 @@ Content-Type: application/json
   "password": "123456"
 }
 
-### LOGIN USER
+### LOGIN COACH
 POST http://localhost:8000/api/auth/login
 Content-Type: application/json
 
@@ -28,24 +28,24 @@ GET http://localhost:8000/api/coaches
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
 
-### GET USER BY ID
+### GET COACH BY ID
 GET http://localhost:8000/api/coaches/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
 
-### EDIT USER
+### EDIT COACH
 PUT http://localhost:8000/api/coaches/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
 
 {
-    "pseudonym": "raoakif",
-    "email": "akifrao@gmail.com",
-    "password": "123456",
-    "profileImage": "https://raw.githubusercontent.com/Immages/writinghat/main/caps/thinking_cap1.png"
+  "name": "Coach 01",
+  "username": "coach01",
+  "email": "coach01@gmail.com",
+  "password": "123456"
 }
 
-### DELETE A USER
+### DELETE A COACH
 DELETE http://localhost:8000/api/coaches/3
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
@@ -53,18 +53,153 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 
 # ---------------------------------------------------------
 
-// -------- START PROMPT-CATEGORY REQUESTS -------- //
-### ADD A PROMT-CATEGORY
+// -------- START PLAYER REQUESTS -------- //
 
+### Create a new Player
+POST http://localhost:8000/api/players
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
 
+{
+  "username": "jennydoe",
+  "name": "Jenny Doe",
+  "number": "+923330508717",
+  "position": "FULL_BACK_RIGHT",
+  "availability_status": "PENDING"
+}
 
-### REGISTER A USER
-POST http://localhost:8000/api/coaches
+# {
+#   "username": "johndoe",
+#   "name": "John Doe",
+#   "number": "+923330508717",
+#   "position": "GOAL_KEEPER",
+#   "availability_status": "PENDING"
+# }
+
+### Get all players
+GET http://localhost:8000/api/players
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+
+### Get a player by ID
+GET http://localhost:8000/api/players/:id
+
+### Update a player
+PUT http://localhost:8000/api/players/:id
 Content-Type: application/json
 
 {
-  "name": "Rao Akif 01",
-  "pseudonym": "raoakif01",
-  "email": "akifrao01@gmail.com",
-  "password": "123456"
+  {
+  "name": "Jenny Doe",
+  "number": "+923216363147"
 }
+}
+
+### Delete a player
+DELETE http://localhost:8000/api/players/:id
+
+// -------- END PLAYER REQUESTS -------- //
+
+# ---------------------------------------------------------
+
+// -------- START TEAM REQUESTS -------- //
+
+### Create a new Team
+POST http://localhost:8000/api/teams
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+
+{
+  "playerIds": [1, 2]
+}
+
+
+### Get all teams
+GET http://localhost:8000/api/teams
+
+
+
+### Get a team by ID
+GET http://localhost:8000/api/teams/:id
+
+
+
+### Update a team
+PUT http://localhost:8000/api/teams/:id
+Content-Type: application/json
+
+{
+  "playerIds": [3, 4]
+}
+
+
+### Delete a team
+DELETE http://localhost:8000/api/teams/:id
+
+
+### Get all players in a team
+# GET http://localhost:8000/api/teams/:id/players
+GET http://localhost:8000/api/teams/1/players
+
+
+// -------- END TEAM REQUESTS -------- //
+
+# ---------------------------------------------------------
+
+// -------- START EVENT REQUESTS -------- //
+
+### Create a new Event
+POST http://localhost:8000/api/events
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjczMTQ5MiwiZXhwIjoxNjg3MzM2MjkyfQ.uTj3twqCYEkWP7K3Uhr7bGqptMGWnXjPlI2M6ihkQq0
+
+{
+  "event_type": "MATCH",
+  "date": "2023-06-10",
+  "time": "15:00",
+  "location": "Stadium XYZ",
+  "details": "Important match against Team ABC",
+  "teamId": 1
+}
+
+### Get all events
+GET http://localhost:8000/api/events
+
+### Get an event by ID
+GET http://localhost:8000/api/events/1
+
+### Update an event
+PUT http://localhost:8000/api/events/:id
+Content-Type: application/json
+
+{
+  "event_type": "PRACTICE",
+  "date": "2023-06-12",
+  "time": "10:00",
+  "location": "Training Ground",
+  "details": "Practice session for upcoming match",
+  "teamId": 1
+}
+
+### Delete an event
+DELETE http://localhost:8000/api/events/:id
+
+### Get an event with all players
+GET http://localhost:8000/api/events/1/players
+
+
+# GET http://localhost:8000/api/events/:id/players/:playerId/availability
+
+### Update the availability status of players in an event
+PUT http://localhost:8000/api/events/1/players/1/availability
+Content-Type: application/json
+
+{
+  "availability_status": "GOING"
+}
+
+
+# POST http://localhost:8000/api/events/:eventId/generate-invitation
+### Get an event with all players
+POST http://localhost:8000/api/events/1/generate-invitation
+
+// -------- END EVENT REQUESTS -------- //

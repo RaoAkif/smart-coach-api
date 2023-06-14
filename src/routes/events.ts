@@ -7,9 +7,6 @@ import {
   deleteEvent,
   getEventWithPlayers,
   updatePlayerAvailability,
-  generateInvitationToken,
-  showEventInvitation,
-  updatePlayerAvailabilityFromInvitation,
 } from '../controllers/eventController';
 import { verifyJWT } from "../middleware/verifyJWT"
 
@@ -32,14 +29,5 @@ router.route('/:id/players')
 
 router.route('/:eventId/players/:playerId/availability')
   .post(updatePlayerAvailability);
-
-router.route('/:eventId/generate-invitation')
-  .post(generateInvitationToken);
-
-router.route('/:eventId/:invitationToken')
-  .get(showEventInvitation);
-
-router.route('/:eventId/players/availability')
-  .post(updatePlayerAvailabilityFromInvitation);
 
 export default router;

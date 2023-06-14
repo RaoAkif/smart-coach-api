@@ -1,13 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 import { PrismaClient, Player } from '@prisma/client';
 const prisma = new PrismaClient();
+import { generatePassword } from "../utils/passwordUtils"
 
 // @desc Create a new Player
 // @route POST /players
 // @access Private
 export const addPlayer = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { username, name, number, password, position, teamId } = req.body;
+    const { username, name, number, position, teamId } = req.body;
+    const password = generatePassword(); // Generate a random password using a utility function
 
     const newPlayer = await prisma.player.create({
       data: {
@@ -16,11 +18,6 @@ export const addPlayer = async (req: Request, res: Response, next: NextFunction)
         number,
         password,
         position,
-        team: {
-          connect: {
-            id: teamId,
-          },
-        },
       },
     });
 
@@ -77,11 +74,6 @@ export const updatePlayer = async (req: Request, res: Response, next: NextFuncti
         number,
         password,
         position,
-        team: {
-          connect: {
-            id: teamId,
-          },
-        },
       },
     });
 
