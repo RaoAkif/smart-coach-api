@@ -6,7 +6,7 @@ interface AuthenticatedRequest extends Request {
     roles?: string[];
 }
 
-const verifyJWT = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
+export const verifyJWT = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization || req.headers.Authorization;
 
     if (typeof authHeader !== 'string' && !(authHeader instanceof Array)) {

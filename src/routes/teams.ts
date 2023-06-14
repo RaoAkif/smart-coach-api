@@ -1,7 +1,10 @@
 import express from 'express';
 import { createTeam, getAllTeams, getTeamById, updateTeam, deleteTeam, getPlayersInTeam} from "../controllers/teamController"
+import { verifyJWT } from "../middleware/verifyJWT"
 
 const router = express.Router();
+
+router.use(verifyJWT)
 
 router.route('/')
   .post(createTeam)

@@ -6,8 +6,11 @@ import {
   updatePlayer,
   deletePlayer,
 } from '../controllers/playerController';
+import { verifyJWT } from "../middleware/verifyJWT"
 
 const router = express.Router();
+
+router.use(verifyJWT)
 
 router.route('/')
   .post(addPlayer)

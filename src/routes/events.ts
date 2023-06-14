@@ -11,8 +11,11 @@ import {
   showEventInvitation,
   updatePlayerAvailabilityFromInvitation,
 } from '../controllers/eventController';
+import { verifyJWT } from "../middleware/verifyJWT"
 
 const router = express.Router();
+
+router.use(verifyJWT)
 
 router.route('/')
   .post(addEvent)
