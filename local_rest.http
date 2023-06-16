@@ -121,9 +121,9 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 {
+  "name": "Team 01",
   "playerIds": [1, 2]
 }
-
 
 ### Get all teams
 GET http://localhost:8000/api/teams

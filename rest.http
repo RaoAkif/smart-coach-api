@@ -1,54 +1,111 @@
 // -------- START COACHES REQUESTS -------- //
-### GET ALL COACHES
-GET https://smart-coach-api.vercel.app/api/coaches
-Content-Type: application/json
-
-### REGISTER A USER
-POST https://smart-coach-api.vercel.app/api/auth/register
+### REGISTER A COACH
+POST https://smart-coach-api.vercel.app/api/coaches/register
 Content-Type: application/json
 
 {
-  "name": "Rao Akif 03",
-  "pseudonym": "raoakif03",
-  "email": "akifrao03@gmail.com",
+  "name": "Coach 01",
+  "username": "coach01",
+  "email": "coach01@gmail.com",
   "password": "123456"
 }
 
-### LOGIN USER
-POST https://smart-coach-api.vercel.app/api/auth/
+### LOGIN COACH
+POST https://smart-coach-api.vercel.app/api/auth/coach/login
 Content-Type: application/json
 
 {
-  "pseudonym": "raoakif",
+  "username": "coach01",
   "password": "123456"
+}
+
+### LOGIN PLAYER
+POST https://smart-coach-api.vercel.app/api/auth/player/login
+Content-Type: application/json
+
+{
+  "username": "johndoe",
+  "password": "7J$11^xA"
 }
 
 ### GET ALL COACHES
 GET https://smart-coach-api.vercel.app/api/coaches
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
 
-### GET USER BY ID
-GET https://smart-coach-api.vercel.app/api/coaches/3
+### GET COACH BY ID
+GET https://smart-coach-api.vercel.app/api/coaches/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
 
-### EDIT USER
+### EDIT COACH
 PUT https://smart-coach-api.vercel.app/api/coaches/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
 
 {
-    "pseudonym": "raoakif",
-    "email": "akifrao@gmail.com",
-    "password": "123456",
-    "profileImage": "https://raw.githubusercontent.com/Immages/writinghat/main/caps/thinking_cap1.png"
+  "name": "Coach 01",
+  "username": "coach01",
+  "email": "coach01@gmail.com",
+  "password": "123456"
 }
 
-### DELETE A USER
+### DELETE A COACH
 DELETE https://smart-coach-api.vercel.app/api/coaches/3
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc2V1ZG9ueW0iOiJyYW9ha2lmIn0sImlhdCI6MTY4MjYzMTc4MiwiZXhwIjoxNjgzMjM2NTgyfQ.ucJTIgrHYIUHIEosirCyzu6YrDhodqllheG5u8ws6FA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
 // -------- END COACHES REQUESTS -------- //
+
+# ---------------------------------------------------------
+
+// -------- START PLAYER REQUESTS -------- //
+
+### Create a new Player
+POST https://smart-coach-api.vercel.app/api/players
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
+
+# {
+#   "name": "John Doe",
+#   "username": "johndoe",
+#   "email": "johndoe@gmail.com",
+#   "number": "+923330508717",
+#   "position": "GOAL_KEEPER",
+#   "availability_status": "PENDING"
+# }
+
+{
+  "name": "Jenny Doe",
+  "username": "jennydoe",
+  "email": "jennydoe@gmail.com",
+  "number": "+923330508717",
+  "position": "FULL_BACK_RIGHT",
+  "availability_status": "PENDING"
+}
+
+
+### Get all players
+GET https://smart-coach-api.vercel.app/api/players
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
+
+### Get a player by ID
+GET https://smart-coach-api.vercel.app/api/players/:id
+
+### Update a player
+PUT https://smart-coach-api.vercel.app/api/players/:id
+Content-Type: application/json
+
+{
+  {
+  "name": "Jenny Doe",
+  "number": "+923216363147"
+}
+}
+
+### Delete a player
+DELETE https://smart-coach-api.vercel.app/api/players/:id
+
+// -------- END PLAYER REQUESTS -------- //
 
 # ---------------------------------------------------------
 
@@ -57,15 +114,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySW5mbyI6eyJwc
 ### Create a new Team
 POST https://smart-coach-api.vercel.app/api/teams
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjkzNDg4NywiZXhwIjoxNjg3NTM5Njg3fQ.nqxeMCZMbyCsqEn3chFfFYTZfohERTCTEfbZO6KLmb8
 
 {
+  "name": "Team 01",
   "playerIds": [1, 2]
 }
 
 
 ### Get all teams
 GET https://smart-coach-api.vercel.app/api/teams
-
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
 
 
 ### Get a team by ID
@@ -95,46 +155,12 @@ GET https://smart-coach-api.vercel.app/api/teams/1/players
 
 # ---------------------------------------------------------
 
-// -------- START PLAYER REQUESTS -------- //
-
-### Create a new Player
-POST https://smart-coach-api.vercel.app/api/players
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "number": "+923330508717"
-}
-
-### Get all players
-GET https://smart-coach-api.vercel.app/api/players
-
-### Get a player by ID
-GET https://smart-coach-api.vercel.app/api/players/:id
-
-### Update a player
-PUT https://smart-coach-api.vercel.app/api/players/:id
-Content-Type: application/json
-
-{
-  {
-  "name": "Jenny Doe",
-  "number": "+923216363147"
-}
-}
-
-### Delete a player
-DELETE https://smart-coach-api.vercel.app/api/players/:id
-
-// -------- END PLAYER REQUESTS -------- //
-
-# ---------------------------------------------------------
-
 // -------- START EVENT REQUESTS -------- //
 
 ### Create a new Event
 POST https://smart-coach-api.vercel.app/api/events
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
 
 {
   "event_type": "MATCH",

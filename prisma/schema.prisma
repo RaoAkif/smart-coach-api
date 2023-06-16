@@ -35,6 +35,7 @@ model Player {
 
 model Team {
   id      Int      @id @default(autoincrement())
+  name    String
   players Player[]
   event   Event[]
 }

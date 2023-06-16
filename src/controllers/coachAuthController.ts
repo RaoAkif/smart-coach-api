@@ -21,8 +21,8 @@ export const loginCoach = async (req: Request, res: Response, next: NextFunction
         const accessToken = jwt.sign(
           {
             "CoachInfo": {
-              "coachId": coach.id
-              // "username": coach.username
+              "coachId": coach.id,
+              "username": coach.username
             }
           },
           process.env.ACCESS_TOKEN_SECRET as Secret,

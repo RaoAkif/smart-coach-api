@@ -9,6 +9,7 @@ export const createTeam = async (req: Request, res: Response, next: NextFunction
   try {
     const newTeam = await prisma.team.create({
       data: {
+        "name": req.body.name,
         players: {
           connect: req.body.playerIds.map((id: number) => ({ id })),
         },

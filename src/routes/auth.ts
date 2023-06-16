@@ -14,7 +14,6 @@ router.route("/coach/login")
 router.route('/coach/logout')
     .post(logoutCoach)
 
-
 // Login Player
 router.route("/player/login")
   .post(loginLimiter, loginPlayer);
