@@ -7,12 +7,13 @@ const options: Options = {
       title: 'Smart Coach API',
       version: '1.0.0',
       description: 'Complete Smart API Documentation',
-      noSourcemaps: true,
     },
     servers: [
       {
         url: 'http://localhost:8000', // DEVELOPMENT
-        // url: 'https://smart-coach-api.vercel.app', // PRODUCTION
+      },
+      {
+        url: 'https://smart-coach-api.vercel.app', // PRODUCTION
       },
     ],
   },
