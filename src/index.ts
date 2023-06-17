@@ -4,7 +4,8 @@ import colors from 'colors';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import corsOptions from './config/corsOptions';
-import path from 'path';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swagger';
 
 import authRoute from "./routes/auth";
 import coachRoute from "./routes/coaches";
@@ -20,6 +21,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser())
+
+// Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 dotenv.config();
 
