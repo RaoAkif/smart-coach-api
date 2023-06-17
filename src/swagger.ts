@@ -1,5 +1,4 @@
-import swaggerJSDoc, { Options } from 'swagger-jsdoc';
-import * as path from 'path';
+import swaggerJSDoc, { Options, SwaggerDefinition } from 'swagger-jsdoc';
 
 const options: Options = {
   definition: {
@@ -11,14 +10,14 @@ const options: Options = {
     },
     servers: [
       {
-        // url: 'http://localhost:8000', // DEVELOPMENT
-        url: 'https://smart-coach-api.vercel.app', // PRODUCTION
+        url: 'http://localhost:8000', // DEVELOPMENT
+        // url: 'https://smart-coach-api.vercel.app', // PRODUCTION
       },
     ],
   },
-  apis: [path.resolve(__dirname, './routes/*.js')], // Update the file path pattern
+  apis: ['./src/routes/*.ts'], // Replace with your route files
 };
 
-const swaggerSpec = swaggerJSDoc(options);
+const swaggerSpec: SwaggerDefinition = swaggerJSDoc(options) as SwaggerDefinition;
 
 export default swaggerSpec;
