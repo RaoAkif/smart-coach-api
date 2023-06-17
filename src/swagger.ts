@@ -1,4 +1,5 @@
-import swaggerJSDoc, { Options, SwaggerDefinition } from 'swagger-jsdoc';
+import swaggerJSDoc, { Options } from 'swagger-jsdoc';
+import * as path from 'path';
 
 const options: Options = {
   definition: {
@@ -15,9 +16,9 @@ const options: Options = {
       },
     ],
   },
-  apis: ['./src/routes/*.ts'], // Replace with your route files
+  apis: [path.resolve(__dirname, './routes/*.js')], // Update the file path pattern
 };
 
-const swaggerSpec: SwaggerDefinition = swaggerJSDoc(options) as SwaggerDefinition;
+const swaggerSpec = swaggerJSDoc(options);
 
 export default swaggerSpec;
