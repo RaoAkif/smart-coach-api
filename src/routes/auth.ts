@@ -1,27 +1,141 @@
 import express, { Router } from 'express';
-const router: Router = express.Router();
 import { loginCoach, refreshCoach, logoutCoach } from '../controllers/coachAuthController';
 import { loginPlayer, refreshPlayer, logoutPlayer } from '../controllers/playerAuthController';
 import loginLimiter from '../middleware/loginLimiter';
 
-// Login Coach
-router.route("/coach/login")
+const router: Router = express.Router();
+
+/**
+ * @swagger
+ * tags:
+ *   name: Authentication
+ *   description: API endpoints for authentication
+ */
+
+/**
+ * @swagger
+ * /auth/coach/login:
+ *   post:
+ *     summary: Login as a coach
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             required:
+ *               - username
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Successful login
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Internal server error
+ */
+router.route('/auth/coach/login')
   .post(loginLimiter, loginCoach);
 
-  router.route('/coach/refresh')
-    .get(refreshCoach)
+/**
+ * @swagger
+ * /auth/coach/refresh:
+ *   get:
+ *     summary: Refresh access token for a coach
+ *     tags: [Authentication]
+ *     responses:
+ *       200:
+ *         description: Successful token refresh
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Internal server error
+ */
+router.route('/auth/coach/refresh')
+  .get(refreshCoach);
 
-router.route('/coach/logout')
-    .post(logoutCoach)
+/**
+ * @swagger
+ * /auth/coach/logout:
+ *   post:
+ *     summary: Logout a coach and clear cookies
+ *     tags: [Authentication]
+ *     responses:
+ *       204:
+ *         description: Logout successful
+ *       500:
+ *         description: Internal server error
+ */
+router.route('/auth/coach/logout')
+  .post(logoutCoach);
 
-// Login Player
-router.route("/player/login")
+/**
+ * @swagger
+ * /auth/player/login:
+ *   post:
+ *     summary: Login as a player
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             required:
+ *               - username
+ *               - password
+ *     responses:
+ *       200:
+ *         description: Successful login
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Internal server error
+ */
+router.route('/auth/player/login')
   .post(loginLimiter, loginPlayer);
 
-  router.route('/player/refresh')
-    .get(refreshPlayer)
+/**
+ * @swagger
+ * /auth/player/refresh:
+ *   get:
+ *     summary: Refresh access token for a player
+ *     tags: [Authentication]
+ *     responses:
+ *       200:
+ *         description: Successful token refresh
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Internal server error
+ */
+router.route('/auth/player/refresh')
+  .get(refreshPlayer);
 
-router.route('/player/logout')
-    .post(logoutPlayer)
+/**
+ * @swagger
+ * /auth/player/logout:
+ *   post:
+ *     summary: Logout a player and clear cookies
+ *     tags: [Authentication]
+ *     responses:
+ *       204:
+ *         description: Logout successful
+ *       500:
+ *         description: Internal server error
+ */
+router.route('/auth/player/logout')
+  .post(logoutPlayer);
 
 export default router;
