@@ -19,7 +19,13 @@ const options: Options = {
       },
     ],
   },
-  apis: ['./src/routes/*.ts'], // Replace with the actual path to your route files
+  apis: [
+    './src/routes/auth.ts',
+    './src/routes/coaches.ts',
+    './src/routes/players.ts',
+    './src/routes/teams.ts',
+    './src/routes/events.ts',
+  ],
   noSourcemaps: true, // Disable source map generation
 };
 
