@@ -1,12 +1,15 @@
 {
+  "version": 2,
   "builds": [
-    { "src": "src/index.ts", "use": "@vercel/node" },
-    { "src": "src/swagger.ts", "use": "@vercel/node" },
-    { "src": "src/controllers/**/*.ts", "use": "@vercel/node" },
-    { "src": "src/routes/**/*.ts", "use": "@vercel/node" },
-    { "src": "tsconfig.json", "use": "vercel-build" }
+    {
+      "src": "src/index.ts",
+      "use": "@vercel/node"
+    }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/src/index.ts" }
+    {
+      "src": "/(.*)",
+      "dest": "/src/index.ts"
+    }
   ]
 }
