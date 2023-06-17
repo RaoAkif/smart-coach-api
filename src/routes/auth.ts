@@ -14,7 +14,7 @@ const router: Router = express.Router();
 
 /**
  * @swagger
- * /auth/coach/login:
+ * /api/auth/coach/login:
  *   post:
  *     summary: Login as a coach
  *     tags: [Authentication]
@@ -40,12 +40,12 @@ const router: Router = express.Router();
  *       500:
  *         description: Internal server error
  */
-router.route('/auth/coach/login')
+router.route('/coach/login')
   .post(loginLimiter, loginCoach);
 
 /**
  * @swagger
- * /auth/coach/refresh:
+ * /api/auth/coach/refresh:
  *   get:
  *     summary: Refresh access token for a coach
  *     tags: [Authentication]
@@ -57,12 +57,12 @@ router.route('/auth/coach/login')
  *       500:
  *         description: Internal server error
  */
-router.route('/auth/coach/refresh')
+router.route('/coach/refresh')
   .get(refreshCoach);
 
 /**
  * @swagger
- * /auth/coach/logout:
+ * /api/auth/coach/logout:
  *   post:
  *     summary: Logout a coach and clear cookies
  *     tags: [Authentication]
@@ -72,7 +72,7 @@ router.route('/auth/coach/refresh')
  *       500:
  *         description: Internal server error
  */
-router.route('/auth/coach/logout')
+router.route('/coach/logout')
   .post(logoutCoach);
 
 /**

@@ -10,7 +10,8 @@ const options: Options = {
     },
     servers: [
       {
-        url: 'https://smart-coach-api.vercel.app/api', // Replace with your server URL
+        // url: 'http://localhost:8000', // DEVELOPMENT
+        url: 'https://smart-coach-api.vercel.app', // PRODUCTION
       },
     ],
   },
