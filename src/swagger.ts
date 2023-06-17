@@ -18,6 +18,7 @@ const options: Options = {
     ],
   },
   apis: ['./src/routes/*.ts'], // Replace with the actual path to your route files
+  noSourcemaps: true, // Disable source map generation
 };
 
 const swaggerSpec: SwaggerDefinition = swaggerJSDoc(options) as SwaggerDefinition;
