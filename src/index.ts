@@ -28,7 +28,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 dotenv.config();
 
 // ROUTES PRISMA
-app.use("/api/auth", authRoute);
+app.use(authRoute);
 app.use("/api/coaches", coachRoute);
 app.use("/api/players", playerRoute);
 app.use("/api/teams", teamRoute);

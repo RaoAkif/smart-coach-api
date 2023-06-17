@@ -40,7 +40,7 @@ const router: Router = express.Router();
  *       500:
  *         description: Internal server error
  */
-router.route('/coach/login')
+router.route('/api/auth//login')
   .post(loginLimiter, loginCoach);
 
 /**
@@ -57,7 +57,7 @@ router.route('/coach/login')
  *       500:
  *         description: Internal server error
  */
-router.route('/coach/refresh')
+router.route('/api/auth//refresh')
   .get(refreshCoach);
 
 /**
@@ -72,7 +72,7 @@ router.route('/coach/refresh')
  *       500:
  *         description: Internal server error
  */
-router.route('/coach/logout')
+router.route('/api/auth//logout')
   .post(logoutCoach);
 
 /**
@@ -103,7 +103,7 @@ router.route('/coach/logout')
  *       500:
  *         description: Internal server error
  */
-router.route('/auth/player/login')
+router.route('/api/auth/player/login')
   .post(loginLimiter, loginPlayer);
 
 /**
@@ -120,7 +120,7 @@ router.route('/auth/player/login')
  *       500:
  *         description: Internal server error
  */
-router.route('/auth/player/refresh')
+router.route('/api/auth/player/refresh')
   .get(refreshPlayer);
 
 /**
@@ -135,7 +135,7 @@ router.route('/auth/player/refresh')
  *       500:
  *         description: Internal server error
  */
-router.route('/auth/player/logout')
+router.route('/api/auth/player/logout')
   .post(logoutPlayer);
 
 export default router;
