@@ -6,9 +6,9 @@ const swaggerOptions: Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Writing Hat API',
+      title: 'Smart Coach API',
       version: '1.0.0',
-      description: 'This API contains all the endpoints of writing Hat CRUD.',
+      description: 'This API contains all the endpoints of smart Coach CRUD.',
     },
     servers: [
       {
