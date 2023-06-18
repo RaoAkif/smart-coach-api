@@ -17,7 +17,13 @@ const swaggerOptions: Options = {
       },
     ],
   },
-  apis: ['./src/routes/*.ts'],
+  apis: [
+    './src/routes/auth.ts',
+    './src/routes/coaches.ts',
+    './src/routes/players.ts',
+    './src/routes/teams.ts',
+    './src/routes/events.ts'
+  ],
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
