@@ -17,7 +17,8 @@ const swaggerOptions: Options = {
       },
     ],
   },
-  apis: ['./dist/routes/*.js'], // Update the path to JavaScript files
+  // apis: ['./src/routes/*.ts'], // DEVELOPMENT
+  apis: ['./dist/routes/*.js'], // PRODUCTION
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
