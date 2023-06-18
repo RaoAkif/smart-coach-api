@@ -17,13 +17,7 @@ const swaggerOptions: Options = {
       },
     ],
   },
-  apis: [
-    './src/routes/auth.ts',
-    './src/routes/coaches.ts',
-    './src/routes/players.ts',
-    './src/routes/teams.ts',
-    './src/routes/events.ts'
-  ],
+  apis: ['./dist/routes/*.js'], // Update the path to JavaScript files
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
