@@ -1,3 +1,4 @@
+import { Application } from 'express';
 import swaggerJsdoc, { Options } from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
@@ -21,7 +22,7 @@ const swaggerOptions: Options = {
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-export default (app: any): void => {
+export default (app: Application): void => {
   const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, { customCssUrl: CSS_URL }));
