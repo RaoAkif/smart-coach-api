@@ -11,9 +11,9 @@ import playerRoute from "./routes/players";
 import teamRoute from "./routes/teams";
 import eventRoute from "./routes/events";
 
-import swagger from './swagger'; // Import the Swagger module
-
 const app: Express = express();
+
+require('./swagger')(app); // Invoke the Swagger module passing the app instance
 
 app.use(cors(corsOptions));
 
@@ -21,8 +21,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
-
-swagger(app); // Invoke the Swagger module passing the app instance
 
 dotenv.config();
 

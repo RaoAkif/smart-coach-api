@@ -1,29 +1,27 @@
-import { Application } from 'express';
-import swaggerJsdoc, { Options } from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
-const swaggerOptions: Options = {
+const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
       title: 'Smart Coach API',
       version: '1.0.0',
-      description: 'This API contains all the endpoints of smart Coach CRUD.',
+      description: 'This API contains all the endpoints of Smart Coach CRUD.',
     },
     servers: [
       {
-        // url: 'http://localhost:8000', // DEVELOPMENT
-        url: 'https://smart-coach-api.vercel.app', // PRODUCTION
+        // url: `http://localhost:${process.env.PORT || 5000}`,
+        url: `https://smart-coach-api.vercel.app`,
       },
     ],
   },
-  // apis: ['./src/routes/*.ts'], // DEVELOPMENT
-  apis: ['./dist/routes/*.js'], // PRODUCTION
+  apis: ['./dist/routes/*.js'],
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
 
-export default (app: Application): void => {
+module.exports = (app: any) => {
   const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, { customCssUrl: CSS_URL }));
