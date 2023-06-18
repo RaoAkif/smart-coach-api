@@ -11,6 +11,15 @@ const options: Options = {
       title: 'Smart Coach API',
       version: '1.0.0',
       description: 'Complete Smart API Documentation',
+      license: {
+        name: "MIT",
+        url: "https://spdx.org/licenses/MIT.html",
+      },
+      contact: {
+        name: "Smart Coach",
+        url: "https://smart-coach.netlify.app/",
+        email: "info@smart-coach.com",
+      },
     },
     servers: [
       {
@@ -19,19 +28,18 @@ const options: Options = {
       },
     ],
   },
-  apis: [
-    './src/routes/auth.ts',
-    './src/routes/coaches.ts',
-    './src/routes/players.ts',
-    './src/routes/teams.ts',
-    './src/routes/events.ts',
-  ],
+  apis: ['./src/routes/*.ts'],
   noSourcemaps: true, // Disable source map generation
+};
+
+// Serve the Swagger documentation using swagger-ui-express
+const swaggerOptions = {
+  customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css",
 };
 
 const swaggerSpec: SwaggerDefinition = swaggerJSDoc(options) as SwaggerDefinition;
 
 // Serve the Swagger documentation using swagger-ui-express
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerOptions));
 
 export default swaggerSpec;
