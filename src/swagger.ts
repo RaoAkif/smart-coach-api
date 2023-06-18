@@ -1,45 +1,28 @@
-import express, { Express } from 'express';
-import swaggerJSDoc, { Options, SwaggerDefinition } from 'swagger-jsdoc';
+import swaggerJsdoc, { Options } from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
-const app: Express = express();
-
-const options: Options = {
+const swaggerOptions: Options = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Smart Coach API',
+      title: 'Writing Hat API',
       version: '1.0.0',
-      description: 'Complete Smart API Documentation',
-      license: {
-        name: "MIT",
-        url: "https://spdx.org/licenses/MIT.html",
-      },
-      contact: {
-        name: "Smart Coach",
-        url: "https://smart-coach.netlify.app/",
-        email: "info@smart-coach.com",
-      },
+      description: 'This API contains all the endpoints of writing Hat CRUD.',
     },
     servers: [
       {
-        // url: 'http://localhost:8000', // DEVELOPMENT
-        url: 'https://smart-coach-api.vercel.app', // PRODUCTION
+        url: 'http://localhost:8000', // DEVELOPMENT
+        // url: 'https://smart-coach-api.vercel.app', // PRODUCTION
       },
     ],
   },
   apis: ['./src/routes/*.ts'],
-  noSourcemaps: true, // Disable source map generation
 };
 
-// Serve the Swagger documentation using swagger-ui-express
-const swaggerOptions = {
-  customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css",
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+
+export default (app: any): void => {
+  const CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, { customCssUrl: CSS_URL }));
 };
-
-const swaggerSpec: SwaggerDefinition = swaggerJSDoc(options) as SwaggerDefinition;
-
-// Serve the Swagger documentation using swagger-ui-express
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerOptions));
-
-export default swaggerSpec;

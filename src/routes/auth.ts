@@ -40,7 +40,7 @@ const router: Router = express.Router();
  *       500:
  *         description: Internal server error
  */
-router.route('/api/auth/coach/login')
+router.route('/coach/login')
   .post(loginLimiter, loginCoach);
 
 /**
@@ -57,7 +57,7 @@ router.route('/api/auth/coach/login')
  *       500:
  *         description: Internal server error
  */
-router.route('/api/auth/coach/refresh')
+router.route('/coach/refresh')
   .get(refreshCoach);
 
 /**
@@ -72,12 +72,12 @@ router.route('/api/auth/coach/refresh')
  *       500:
  *         description: Internal server error
  */
-router.route('/api/auth/coach/logout')
+router.route('/coach/logout')
   .post(logoutCoach);
 
 /**
  * @swagger
- * /api/auth/player/login:
+ * /auth/player/login:
  *   post:
  *     summary: Login as a player
  *     tags: [Authentication]
@@ -103,12 +103,12 @@ router.route('/api/auth/coach/logout')
  *       500:
  *         description: Internal server error
  */
-router.route('/api/auth/player/login')
+router.route('/auth/player/login')
   .post(loginLimiter, loginPlayer);
 
 /**
  * @swagger
- * /api/auth/player/refresh:
+ * /auth/player/refresh:
  *   get:
  *     summary: Refresh access token for a player
  *     tags: [Authentication]
@@ -120,12 +120,12 @@ router.route('/api/auth/player/login')
  *       500:
  *         description: Internal server error
  */
-router.route('/api/auth/player/refresh')
+router.route('/auth/player/refresh')
   .get(refreshPlayer);
 
 /**
  * @swagger
- * /api/auth/player/logout:
+ * /auth/player/logout:
  *   post:
  *     summary: Logout a player and clear cookies
  *     tags: [Authentication]
@@ -135,7 +135,7 @@ router.route('/api/auth/player/refresh')
  *       500:
  *         description: Internal server error
  */
-router.route('/api/auth/player/logout')
+router.route('/auth/player/logout')
   .post(logoutPlayer);
 
 export default router;

@@ -4,8 +4,6 @@ import colors from 'colors';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import corsOptions from './config/corsOptions';
-import swaggerUi from 'swagger-ui-express';
-import swaggerSpec from './swagger';
 
 import authRoute from "./routes/auth";
 import coachRoute from "./routes/coaches";
@@ -13,17 +11,18 @@ import playerRoute from "./routes/players";
 import teamRoute from "./routes/teams";
 import eventRoute from "./routes/events";
 
+import swagger from './swagger'; // Import the Swagger module
+
 const app: Express = express();
 
-app.use(cors(corsOptions))
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cookieParser())
+app.use(cookieParser());
 
-// Swagger documentation
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+swagger(app); // Invoke the Swagger module passing the app instance
 
 dotenv.config();
 
@@ -37,7 +36,7 @@ app.use("/api/events", eventRoute);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(colors.green.bold.underline(`[Server]: Server running at PORT ${PORT} | http://localhost:${PORT}/`))
-})
+  console.log(colors.green.bold.underline(`[Server]: Server running at PORT ${PORT} | http://localhost:${PORT}/`));
+});
 
-module.exports = app
+export default app;
