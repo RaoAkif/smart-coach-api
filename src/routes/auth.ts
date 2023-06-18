@@ -103,7 +103,7 @@ router.route('/coach/logout')
  *       500:
  *         description: Internal server error
  */
-router.route('/auth/player/login')
+router.route('/player/login')
   .post(loginLimiter, loginPlayer);
 
 /**
@@ -120,7 +120,7 @@ router.route('/auth/player/login')
  *       500:
  *         description: Internal server error
  */
-router.route('/auth/player/refresh')
+router.route('/player/refresh')
   .get(refreshPlayer);
 
 /**
@@ -135,7 +135,7 @@ router.route('/auth/player/refresh')
  *       500:
  *         description: Internal server error
  */
-router.route('/auth/player/logout')
+router.route('/player/logout')
   .post(logoutPlayer);
 
 export default router;

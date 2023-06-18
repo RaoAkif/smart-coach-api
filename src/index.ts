@@ -27,7 +27,7 @@ swagger(app); // Invoke the Swagger module passing the app instance
 dotenv.config();
 
 // ROUTES PRISMA
-app.use(authRoute);
+app.use("/api/auth", authRoute);
 app.use("/api/coaches", coachRoute);
 app.use("/api/players", playerRoute);
 app.use("/api/teams", teamRoute);
