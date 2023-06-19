@@ -165,7 +165,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 {
-  "title": "Team 1",
+  "title": "Final Match",
   "event_type": "MATCH",
   "date": "2023-06-10",
   "time": "15:00",
@@ -185,6 +185,7 @@ PUT http://localhost:8000/api/events/:id
 Content-Type: application/json
 
 {
+  "title": "Final Match",
   "event_type": "PRACTICE",
   "date": "2023-06-12",
   "time": "10:00",
