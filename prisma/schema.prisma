@@ -45,7 +45,8 @@ model Event {
   title      String
   event_type Event_Type
   date       String
-  time       String
+  start_time String
+  end_time   String
   location   String
   details    String
   Team       Team?      @relation(fields: [teamId], references: [id])
