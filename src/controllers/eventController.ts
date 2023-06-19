@@ -9,10 +9,11 @@ const prisma = new PrismaClient();
 // @access Private
 export const addEvent = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { event_type, date, time, location, details, teamId } = req.body;
+    const { title, event_type, date, time, location, details, teamId } = req.body;
 
     const newEvent = await prisma.event.create({
       data: {
+        title,
         event_type,
         date,
         time,
@@ -67,13 +68,14 @@ export const getEventById = async (req: Request, res: Response, next: NextFuncti
 export const updateEvent = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { id } = req.params;
-    const { event_type, date, time, location, details, teamId } = req.body;
+    const { title, event_type, date, time, location, details, teamId } = req.body;
 
     const updatedEvent = await prisma.event.update({
       where: {
         id: Number(id),
       },
       data: {
+        title,
         event_type,
         date,
         time,
