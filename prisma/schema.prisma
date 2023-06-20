@@ -27,17 +27,16 @@ model Player {
   password            String
   position            Position
   availability_status Availability_Status @default(PENDING)
-  Team                Team?               @relation(fields: [teamId], references: [id])
-  teamId              Int?
+  teams               Team[]
 
-  @@index([teamId])
+  @@index([name])
 }
 
 model Team {
   id      Int      @id @default(autoincrement())
   name    String
   players Player[]
-  event   Event[]
+  events  Event[]
 }
 
 model Event {
