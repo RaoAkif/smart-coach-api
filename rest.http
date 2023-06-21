@@ -180,7 +180,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
   "end_time": "12:00",
   "location": "Stadium XYZ",
   "details": "Important match against Team ABC",
-  "teamId": "1"
+  "teamId": 1
 }
 
 # {
