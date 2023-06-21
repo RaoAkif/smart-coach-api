@@ -116,9 +116,19 @@ POST https://smart-coach-api.vercel.app/api/teams
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjkzNDg4NywiZXhwIjoxNjg3NTM5Njg3fQ.nqxeMCZMbyCsqEn3chFfFYTZfohERTCTEfbZO6KLmb8
 
+# {
+#   "name": "Team 01",
+#   "playerIds": [1, 2]
+# }
+
+# {
+#   "name": "Team 02",
+#   "playerIds": [1]
+# }
+
 {
-  "name": "Team 01",
-  "playerIds": [1, 2]
+  "name": "Team 03",
+  "playerIds": [2]
 }
 
 
@@ -163,13 +173,37 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
 
 {
+  "title": "Event 1",
   "event_type": "MATCH",
   "date": "2023-06-10",
-  "time": "15:00",
+  "start_time": "10:00",
+  "end_time": "12:00",
   "location": "Stadium XYZ",
   "details": "Important match against Team ABC",
-  "teamId": 1
+  "teamId": "1"
 }
+
+# {
+#   "title": "Event 2",
+#   "event_type": "PRACTICE",
+#   "date": "2023-06-10",
+#   "start_time": "10:00",
+#   "end_time": "12:00",
+#   "location": "Stadium XYZ",
+#   "details": "Important match against Team ABC",
+#   "teamId": 2
+# }
+
+# {
+#   "title": "Event 3",
+#   "event_type": "OTHER",
+#   "date": "2023-06-10",
+#   "start_time": "10:00",
+#   "end_time": "12:00",
+#   "location": "Stadium XYZ",
+#   "details": "Important match against Team ABC",
+#   "teamId": 3
+# }
 
 ### Get all events
 GET https://smart-coach-api.vercel.app/api/events
