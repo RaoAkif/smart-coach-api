@@ -36,7 +36,7 @@ model Team {
   id      Int      @id @default(autoincrement())
   name    String
   players Player[]
-  events   Event[]
+  events  Event[]
 
   @@index([name])
 }
@@ -50,8 +50,8 @@ model Event {
   end_time   String
   location   String
   details    String
-  team       Team      @relation(fields: [teamId], references: [id])
-  teamId     Int
+  team       Team       @relation(fields: [teamId], references: [id])
+  teamId     Int        @map("teamId")
 
   @@index([teamId])
 }
