@@ -36,10 +36,9 @@ model Team {
   id      Int      @id @default(autoincrement())
   name    String
   players Player[]
-  event   Event?   @relation(fields: [eventId], references: [id])
-  eventId Int?
+  events   Event[]
 
-  @@index([eventId])
+  @@index([name])
 }
 
 model Event {
@@ -51,7 +50,10 @@ model Event {
   end_time   String
   location   String
   details    String
-  Team       Team[]
+  team       Team      @relation(fields: [teamId], references: [id])
+  teamId     Int
+
+  @@index([teamId])
 }
 
 enum Event_Type {
