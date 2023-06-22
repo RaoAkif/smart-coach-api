@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { createTeam, getAllTeams, getTeamById, updateTeam, deleteTeam, getPlayersInTeam } from "../controllers/teamController";
+import { createTeam, getAllTeams, getTeamById, updateTeam, deleteTeam } from "../controllers/teamController";
 import { verifyJWT } from "../middleware/verifyJWT";
 
 const router: Router = express.Router();
@@ -156,7 +156,5 @@ router.route('/:id')
  *       500:
  *         description: Internal server error
  */
-router.route('/:id/players')
-  .get(getPlayersInTeam);
 
 export default router;

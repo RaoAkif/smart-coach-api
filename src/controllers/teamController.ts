@@ -108,19 +108,3 @@ export const deleteTeam = async (req: Request, res: Response, next: NextFunction
   }
 };
 
-// @desc Get all players in a team
-// @route GET /teams/:id/players
-// @access Private
-export const getPlayersInTeam = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-  try {
-    const { id } = req.params;
-    const players = await prisma.player.findMany({
-      where: {
-        teamId: Number(id),
-      },
-    });
-    res.json(players);
-  } catch (error) {
-    next(error);
-  }
-};
