@@ -216,6 +216,6 @@ router.route('/:id/players')
  *         description: Internal server error
  */
 router.route('/:eventId/players/:playerId/availability')
-  .post(updatePlayerAvailability);
+  .put(updatePlayerAvailability);
 
 export default router;
