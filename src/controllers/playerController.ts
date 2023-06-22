@@ -50,6 +50,13 @@ export const getPlayerById = async (req: Request, res: Response, next: NextFunct
       where: {
         id: Number(id),
       },
+      include: {
+        teams: {
+          include: {
+            events: true
+          }
+        }
+      }
     });
     res.json(player);
   } catch (error) {
