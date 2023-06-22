@@ -86,10 +86,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 
 ### Get all players
 GET https://smart-coach-api.vercel.app/api/players
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MSwidXNlcm5hbWUiOiJjb2FjaDAxIn0sImlhdCI6MTY4NzQ0NjYxMSwiZXhwIjoxNjg4MDUxNDExfQ.aWhWH_NPzYfJr_farLzZRPAwSZo9s-p06Fa9yZRe_QQ
 
 ### Get a player by ID
-GET https://smart-coach-api.vercel.app/api/players/:id
+# GET https://smart-coach-api.vercel.app/api/players/1
+GET http://localhost:8000/api/players/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MSwidXNlcm5hbWUiOiJjb2FjaDAxIn0sImlhdCI6MTY4NzQ0NjYxMSwiZXhwIjoxNjg4MDUxNDExfQ.aWhWH_NPzYfJr_farLzZRPAwSZo9s-p06Fa9yZRe_QQ
+
 
 ### Update a player
 PUT https://smart-coach-api.vercel.app/api/players/:id
@@ -206,10 +209,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 # }
 
 ### Get all events
-GET https://smart-coach-api.vercel.app/api/events
+GET http://localhost:8000/api/events
 
 ### Get an event by ID
-GET https://smart-coach-api.vercel.app/api/events/1
+GET http://localhost:8000/api/events/1
 
 ### Update an event
 PUT https://smart-coach-api.vercel.app/api/events/:id
