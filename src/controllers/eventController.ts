@@ -56,6 +56,13 @@ export const getEventById = async (req: Request, res: Response, next: NextFuncti
       where: {
         id: Number(id),
       },
+      include: {
+        team: {
+          include: {
+            players: true
+          }
+        }
+      }
     });
     res.json(event);
   } catch (error) {
