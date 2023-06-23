@@ -1,12 +1,13 @@
 # Smart Coach API
-> Discover Smart Coach API! Smart Coach, the ultimate platform for amateur football coaches. Streamline scheduling, communication, and team management in one user-friendly hub. Save time, reduce frustration, and focus on your team's success with powerful features, customizable settings, and data-driven insights. Elevate your coaching experience today!
+> Discover Smart Coach API! Smart Coach, the ultimate platform for amateur football coaches. Streamline scheduling, communication, and team management in one user-friendly hub. Save time, reduce frustration, and focus on your team's success with powerful features, customizable settings, and data-driven insights. Elevate your coaching experience today! <br>
 
 ## Features
 1. **Players Management:** API Endpoints for Players CRUD
 
 2. **Managing Teams/Rosters:**  API Endpoints for Teams/Rosters CRUD
 
-3. **Mangaing Events:**  API Endpoints for Events CRUD
+3. **Mangaing Events:**  API Endpoints for Events CRUD <br><br>
+
 
 ## Requirements
 
@@ -14,7 +15,7 @@ To run the Smart Coach API locally, the following requirements must be met:
 
 - Operating System: Any modern operating system (`Windows`, `macOS`, `Linux`)
 - Web Browser: Latest version of `Chrome`, `Firefox`, `Safari`, or `Edge`
-- Server: `Node.js` runtime environment
+- Server: `Node.js` runtime environment <br><br>
 
 ## Installation
 
@@ -66,16 +67,18 @@ Access the Smart Coach API at
 ```
 http://localhost:8000/api/
 ```
+<br>
+
 
 ## Usage
 
 Once the `Smart Coach API` is up and running, users can access it using `Postman`. Use the desktop version of [Postman](https://www.postman.com/downloads/).
 
-API access and usage details are provided in the `API documentation` section.
+API access and usage details are provided in the `API documentation` section.<br><br>
 
 ## API Documentation
 
-The detailed API documentation for `Smart Coach` can be found at [API Documentation URL](https://smart-coach-api.vercel.app/api-docs). It provides information about available endpoints, `request/response` formats, authentication mechanisms, and examples of `API usage`. The documentation [API Documentation](https://smart-coach-api.vercel.app/api-docs) helps developers integrate Smart Coach with other systems or build custom applications on top of it.
+The detailed API documentation for `Smart Coach` can be found at [API Documentation URL](https://smart-coach-api.vercel.app/api-docs). It provides information about available endpoints, `request/response` formats, authentication mechanisms, and examples of `API usage`. The documentation [API Documentation](https://smart-coach-api.vercel.app/api-docs) helps developers integrate Smart Coach with other systems or build custom applications on top of it.<br><br>
 
 ## Code Contributors
 
@@ -83,6 +86,7 @@ The detailed API documentation for `Smart Coach` can be found at [API Documentat
 - GitHub: [@raoakif](https://github.com/RaoAkif)
 - Twitter: [@raoakif](https://twitter.com/RaoAkif)
 - LinkedIn: [Rao Akif](https://linkedin.com/in/RaoAkif)
+<br>
 
 ## Acknowledgments
 👤 **Project Manager:**   [Adrian Dubler](https://www.linkedin.com/in/adrian-dubler). <br><br>
@@ -90,6 +94,7 @@ The detailed API documentation for `Smart Coach` can be found at [API Documentat
   - Thanks to my peers who are always there to offer support.
   - Contributions, issues, and feature requests are welcome!
   - Feel free to check the [issues page](../../issues/).
+<br>
  
 ## Contributing
 
@@ -100,9 +105,13 @@ We welcome contributions from other developers to enhance Smart Coach. To contri
 3. Write unit tests to cover your code changes and ensure existing tests pass.
 4. Submit a pull request with a clear description of your changes and any relevant information.
 
+<br>
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
+<br>
+
 
 ## License
 
