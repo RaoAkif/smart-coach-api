@@ -85,8 +85,8 @@ The detailed API documentation for `Smart Coach` can be found at [API Documentat
 - LinkedIn: [Rao Akif](https://linkedin.com/in/RaoAkif)
 
 ## Acknowledgments
-  👤 Project Manager:   [Adrian Dubler](https://www.linkedin.com/in/adrian-dubler).
-  👤 Project Designer:  [Atakan Bacaksiz](https://www.linkedin.com/in/atakanbacaksiz). Original design of [Smart Coach](https://www.figma.com/file/CTngvtmn5qXkjlEpXlDfAT/smartcoach-ui?type=design&mode=design&t=zihPgAIp5oaHmQkm-0)
+👤 **Project Manager:**   [Adrian Dubler](https://www.linkedin.com/in/adrian-dubler). <br><br>
+👤 **Project Designer:**  [Atakan Bacaksiz](https://www.linkedin.com/in/atakanbacaksiz). Original design of [Smart Coach - UI](https://www.figma.com/file/CTngvtmn5qXkjlEpXlDfAT/smartcoach-ui?type=design&mode=design&t=zihPgAIp5oaHmQkm-0)
   - Thanks to my peers who are always there to offer support.
   - Contributions, issues, and feature requests are welcome!
   - Feel free to check the [issues page](../../issues/).
