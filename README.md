@@ -12,11 +12,11 @@
 
 To run the Smart Coach API locally, the following requirements must be met:
 
-- Operating System: Any modern operating system (Windows, macOS, Linux)
-- Web Browser: Latest version of Chrome, Firefox, Safari, or Edge
-- Server: Node.js runtime environment
+- Operating System: Any modern operating system (`Windows`, `macOS`, `Linux`)
+- Web Browser: Latest version of `Chrome`, `Firefox`, `Safari`, or `Edge`
+- Server: `Node.js` runtime environment
 - `.env` file should contain:
-  - Database: Put the Database_URL Connection String of SQL database.
+  - Database: Put the `Database_URL` Connection String of SQL database.
   - `ACCESS_TOKEN_SECRET` and `REFRESH_TOKEN_SECRET` in `.env` file.
    For example:
 
@@ -29,24 +29,24 @@ REFRESH_TOKEN_SECRET='RANDOM_STRING'
 
 To install and set up Smart Coach locally, follow these steps:
 
-1. Clone the Smart Coach repository from [SmartCoach](https://github.com/RaoAkif/smart-coach-api).
-2. Install Node.js from [Node.js website](https://nodejs.org/en/download) and configure it on your system.
-3. Install and set up a MySQL or PostgreSQL database OR get a connection string of some cloud database like [Planet Scale](https://planetscale.com/)
-4. Navigate to the project directory and run npm install to install the required dependencies.
-5. Configure the database connection and Access Token and Refresh Token by updating the `.env` file, placed in the project root directory.
-6. Run the database migration script to set up the required tables and schema.
+1. Clone the Smart Coach repository from [SmartCoach](https://github.com/RaoAkif/smart-coach-api) with the command `git clone git@github.com:RaoAkif/smart-coach-api.git`.
+2. Install `Node.js` from [Node.js website](https://nodejs.org/en/download) and configure it on your system.
+3. Install and set up a `MySQL` or `PostgreSQL` database OR get a connection string of some cloud database like [Planet Scale](https://planetscale.com/)
+4. Navigate to the project directory and `run npm install` to install the required dependencies.
+5. Configure the database connection and `Access Token` and `Refresh Token` by updating the `.env` file, placed in the project root directory.
+6. Run the database migration script to set up the required tables and schema. In case of Planet Scale, run `npx prisma db push`.
 7. Start the application server using the command `npm run dev`.
-8. Access the Smart Coach API at `http://localhost:8000/api/*`.
+8. Access the Smart Coach API at `http://localhost:8000/api/`.
 
 ## Usage
 
-Once the Smart Coach API is up and running, users can access it using Postman. Use the desktop version of [Postman](https://www.postman.com/downloads/).
+Once the `Smart Coach API` is up and running, users can access it using `Postman`. Use the desktop version of [Postman](https://www.postman.com/downloads/).
 
-API access and usage details are provided in the API documentation section.
+API access and usage details are provided in the `API documentation` section.
 
 ## API Documentation
 
-The detailed API documentation for Smart Coach can be found at [API Documentation URL](https://smart-coach-api.vercel.app/api-docs). It provides information about available endpoints, request/response formats, authentication mechanisms, and examples of API usage. The documentation helps developers integrate Smart Coach with other systems or build custom applications on top of it.
+The detailed API documentation for `Smart Coach` can be found at [API Documentation URL](https://smart-coach-api.vercel.app/api-docs). It provides information about available endpoints, `request/response` formats, authentication mechanisms, and examples of `API usage`. The documentation [API Documentation](https://smart-coach-api.vercel.app/api-docs) helps developers integrate Smart Coach with other systems or build custom applications on top of it.
 
 ## Code Contributors
 
