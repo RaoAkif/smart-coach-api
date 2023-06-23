@@ -18,12 +18,13 @@ To run the Smart Coach API locally, the following requirements must be met:
 - `.env` file should contain:
   - Database: Put the Database_URL Connection String of SQL database.
   - `ACCESS_TOKEN_SECRET` and `REFRESH_TOKEN_SECRET` in `.env` file.
-   For example: 
-  ```
-  DATABASE_URL='mysql://<username>:<password>@aws.connect.psdb.cloud/smart-coach-api?sslaccept=strict'
-  ACCESS_TOKEN_SECRET='RANDOM_STRING'
-  REFRESH_TOKEN_SECRET='RANDOM_STRING'
-  ```
+   For example:
+
+```
+DATABASE_URL='mysql://<username>:<password>@aws.connect.psdb.cloud/smart-coach-api?sslaccept=strict'
+ACCESS_TOKEN_SECRET='RANDOM_STRING'
+REFRESH_TOKEN_SECRET='RANDOM_STRING'
+```
 ## Installation
 
 To install and set up Smart Coach locally, follow these steps:
