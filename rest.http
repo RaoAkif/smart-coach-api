@@ -5,8 +5,8 @@ Content-Type: application/json
 
 {
   "name": "Coach 01",
-  "username": "coach01",
-  "email": "coach01@gmail.com",
+  "username": "coach012",
+  "email": "coach012@gmail.com",
   "password": "123456"
 }
 
@@ -31,7 +31,8 @@ Content-Type: application/json
 ### GET ALL COACHES
 GET https://smart-coach-api.vercel.app/api/coaches
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MSwidXNlcm5hbWUiOiJjb2FjaDAxIn0sImlhdCI6MTY4Nzc1MzIyNiwiZXhwIjoxNjg4MzU4MDI2fQ.sUa_Y6pxm93826NTyGL4u0-URvR2DViPzkeilDdSquM
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4NjgxMTM3OCwiZXhwIjoxNjg3NDE2MTc4fQ.8erhupn7NVfkJtwzd26P87ZfopyA1jtsgviCSrbTjrw
 
 ### GET COACH BY ID
 GET https://smart-coach-api.vercel.app/api/coaches/1
