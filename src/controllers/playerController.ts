@@ -53,7 +53,7 @@ export const getPlayerById = async (req: Request, res: Response, next: NextFunct
       include: {
         teams: {
           include: {
-            events: true
+            event: true
           }
         }
       }
