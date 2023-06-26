@@ -42,7 +42,7 @@ export const loginCoach = async (req: Request, res: Response, next: NextFunction
           maxAge: 7 * 24 * 60 * 60 * 1000,
         })
     
-        res.json({ accessToken, id: coach.id })
+        res.json({ accessToken, id: coach.id, coach })
       } else {
         res.json("Wrong Credentials");
       }
