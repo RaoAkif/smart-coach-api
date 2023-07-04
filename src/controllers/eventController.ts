@@ -20,7 +20,7 @@ export const addEvent = async (req: Request, res: Response, next: NextFunction):
         end_time,
         location,
         details,
-        Team: {
+        team: {
           connect: {
             id: teamId,
           },
@@ -57,7 +57,7 @@ export const getEventById = async (req: Request, res: Response, next: NextFuncti
         id: Number(id),
       },
       include: {
-        Team: {
+        team: {
           include: {
             players: true
           }
@@ -90,7 +90,7 @@ export const updateEvent = async (req: Request, res: Response, next: NextFunctio
         end_time,
         location,
         details,
-        Team: {
+        team: {
           connect: {
             id: teamId,
           },
@@ -136,7 +136,7 @@ export const getEventWithPlayers = async (req: Request, res: Response, next: Nex
         id: eventId,
       },
       include: {
-        Team: {
+        team: {
           include: {
             players: true,
           },
