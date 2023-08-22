@@ -1,10 +1,10 @@
 // -------- START COACHES REQUESTS -------- //
 ### GET ALL COACHES
-GET http://localhost:8000/api/coaches
+GET http://localhost:5000/api/coaches
 Content-Type: application/json
 
 ### REGISTER A COACH
-POST http://localhost:8000/api/coaches/register
+POST http://localhost:5000/api/coaches/register
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ### LOGIN COACH
-POST http://localhost:8000/api/auth/coach/login
+POST http://localhost:5000/api/auth/coach/login
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ### LOGIN PLAYER
-POST http://localhost:8000/api/auth/player/login
+POST http://localhost:5000/api/auth/player/login
 Content-Type: application/json
 
 {
@@ -33,17 +33,17 @@ Content-Type: application/json
 }
 
 ### GET ALL COACHES
-GET http://localhost:8000/api/coaches
+GET http://localhost:5000/api/coaches
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 ### GET COACH BY ID
-GET http://localhost:8000/api/coaches/1
+GET http://localhost:5000/api/coaches/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
 ### EDIT COACH
-PUT http://localhost:8000/api/coaches/1
+PUT http://localhost:5000/api/coaches/1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
@@ -55,7 +55,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 }
 
 ### DELETE A COACH
-DELETE http://localhost:8000/api/coaches/3
+DELETE http://localhost:5000/api/coaches/3
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 // -------- END COACHES REQUESTS -------- //
@@ -65,9 +65,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 // -------- START PLAYER REQUESTS -------- //
 
 ### Create a new Player
-POST http://localhost:8000/api/players
+POST http://localhost:5000/api/players
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MSwidXNlcm5hbWUiOiJjb2FjaDAxIn0sImlhdCI6MTY5MjY5MjU2MSwiZXhwIjoxNjkzMjk3MzYxfQ.e_T_69pfGo1xIR3GdLcGyfWAb3h_FoL7chB1EtEm3oE
 
 # {
 #   "name": "John Doe",
@@ -79,9 +79,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 # }
 
 {
-  "name": "Jenny Doe",
-  "username": "jennydoe",
-  "email": "jennydoe@gmail.com",
+  "name": "Jenny Doe2",
+  "username": "jennydoe2",
+  "email": "jennydoe2@gmail.com",
   "number": "+923330508717",
   "position": "FULL_BACK_RIGHT",
   "availability_status": "PENDING"
@@ -89,14 +89,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 
 
 ### Get all players
-GET http://localhost:8000/api/players
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
+GET http://localhost:5000/api/players
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MSwidXNlcm5hbWUiOiJjb2FjaDAxIn0sImlhdCI6MTY5MjY5MjU2MSwiZXhwIjoxNjkzMjk3MzYxfQ.e_T_69pfGo1xIR3GdLcGyfWAb3h_FoL7chB1EtEm3oE
 
 ### Get a player by ID
-GET http://localhost:8000/api/players/:id
+GET http://localhost:5000/api/players/:id
 
 ### Update a player
-PUT http://localhost:8000/api/players/:id
+PUT http://localhost:5000/api/players/:id
 Content-Type: application/json
 
 {
@@ -107,7 +107,7 @@ Content-Type: application/json
 }
 
 ### Delete a player
-DELETE http://localhost:8000/api/players/:id
+DELETE http://localhost:5000/api/players/:id
 
 // -------- END PLAYER REQUESTS -------- //
 
@@ -116,7 +116,7 @@ DELETE http://localhost:8000/api/players/:id
 // -------- START TEAM REQUESTS -------- //
 
 ### Create a new Team
-POST http://localhost:8000/api/teams
+POST http://localhost:5000/api/teams
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
@@ -126,17 +126,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 }
 
 ### Get all teams
-GET http://localhost:8000/api/teams
+GET http://localhost:5000/api/teams
 
 
 
 ### Get a team by ID
-GET http://localhost:8000/api/teams/:id
+GET http://localhost:5000/api/teams/:id
 
 
 
 ### Update a team
-PUT http://localhost:8000/api/teams/:id
+PUT http://localhost:5000/api/teams/:id
 Content-Type: application/json
 
 {
@@ -145,12 +145,12 @@ Content-Type: application/json
 
 
 ### Delete a team
-DELETE http://localhost:8000/api/teams/:id
+DELETE http://localhost:5000/api/teams/:id
 
 
 ### Get all players in a team
-# GET http://localhost:8000/api/teams/:id/players
-GET http://localhost:8000/api/teams/1/players
+# GET http://localhost:5000/api/teams/:id/players
+GET http://localhost:5000/api/teams/1/players
 
 
 // -------- END TEAM REQUESTS -------- //
@@ -160,7 +160,7 @@ GET http://localhost:8000/api/teams/1/players
 // -------- START EVENT REQUESTS -------- //
 
 ### Create a new Event
-POST http://localhost:8000/api/events
+POST http://localhost:5000/api/events
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY29hY2hJZCI6MX0sImlhdCI6MTY4Njc0MjAwNCwiZXhwIjoxNjg3MzQ2ODA0fQ.a-eL0aEWxY0qWOqyGZ8PKst9nAwxU7XeytJ1-hMXvEs
 
@@ -175,13 +175,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJDb2FjaEluZm8iOnsiY
 }
 
 ### Get all events
-GET http://localhost:8000/api/events
+GET http://localhost:5000/api/events
 
 ### Get an event by ID
-GET http://localhost:8000/api/events/1
+GET http://localhost:5000/api/events/1
 
 ### Update an event
-PUT http://localhost:8000/api/events/:id
+PUT http://localhost:5000/api/events/:id
 Content-Type: application/json
 
 {
@@ -195,16 +195,16 @@ Content-Type: application/json
 }
 
 ### Delete an event
-DELETE http://localhost:8000/api/events/:id
+DELETE http://localhost:5000/api/events/:id
 
 ### Get an event with all players
-GET http://localhost:8000/api/events/1/players
+GET http://localhost:5000/api/events/1/players
 
 
-# GET http://localhost:8000/api/events/:id/players/:playerId/availability
+# GET http://localhost:5000/api/events/:id/players/:playerId/availability
 
 ### Update the availability status of players in an event
-PUT http://localhost:8000/api/events/1/players/1/availability
+PUT http://localhost:5000/api/events/1/players/1/availability
 Content-Type: application/json
 
 {
@@ -212,8 +212,8 @@ Content-Type: application/json
 }
 
 
-# POST http://localhost:8000/api/events/:eventId/generate-invitation
+# POST http://localhost:5000/api/events/:eventId/generate-invitation
 ### Get an event with all players
-POST http://localhost:8000/api/events/1/generate-invitation
+POST http://localhost:5000/api/events/1/generate-invitation
 
 // -------- END EVENT REQUESTS -------- //
